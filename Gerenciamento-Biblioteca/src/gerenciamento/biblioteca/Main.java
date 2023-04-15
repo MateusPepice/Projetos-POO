@@ -1,5 +1,6 @@
 package gerenciamento.biblioteca;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,12 +15,12 @@ public class Main {
     static int aux2 = 0;
     
     
-    public static void main(String[] args) {
-        int escolha = 0;
-        int escolha_9 = 0;
-        int quantidade = 0;
+    public static void main(String[] args) throws IOException {
+        int escolha;
+        int escolha_9;
         
         do{
+            System.out.println("------MENU DE OPÇÕES-----");
             System.out.println("1 - Cadastrar aluno");
             System.out.println("2 - Editar aluno");
             System.out.println("3 - Cadastrar livro");
@@ -29,7 +30,7 @@ public class Main {
             System.out.println("7 - Realizar empréstimo");
             System.out.println("8 - Realizar devolução");
             System.out.println("9 - Gerar relatórios");
-            System.out.println("0 - SAIR\n");
+            System.out.println("0 - SAIR");
             escolha = input.nextInt();
 
             switch(escolha){
@@ -58,26 +59,32 @@ public class Main {
                     RealizarDevolucao();
                     break;
                 case 9:
-                    Relatorio();
+                    System.out.println("1 - Listagem de alunos cadastrados");
+                    System.out.println("2 - Listagem de livros cadastrados");
+                    System.out.println("3 - Listagem de livros emprestados");
+                    escolha_9 = input.nextInt();
+                    Relatorio(escolha_9);
                     break;
                 case 0:
                     System.out.println("Saindo do sistema!");
                     break;
                 default:
                     System.out.println("Opção inválida!");
+                    System.in.read();
                     break;
             }
         } while(escolha != 0);
     }
     
-    public static void CadastrarAluno(){
+    public static void CadastrarAluno() throws IOException{
         
+        System.out.println("-----CADASTRO DE NOVO ALUNO-----");
         if(qtdUsuario < 30){ // Verificação se o vetor já está cheio
             System.out.println("Quantos registros deseja cadastrar?");
             int quantidade = input.nextInt();
             
-            for (int i = 0; i <=quantidade; i++) { //Loop para percorrer o vetor
-                System.out.printf("Registro "+i+"\n");
+            for (int i = 0; i <quantidade; i++) { //Loop para percorrer o vetor
+                System.out.printf("\nREGISTRO "+(i+1)+"\n");
                 if (usuario[i] == null){ // Verifição se determinada posição do vetor está vazia ou não
                     System.out.println("Informe CPF: ");
                     long cpf = input.nextLong();
@@ -86,15 +93,15 @@ public class Main {
                     System.out.println("Informe nome: ");
                     String nome = input.next();
                     System.out.println("Informe telefone: ");
+                    input.nextLine();
                     String telefone = input.next();
 
-                    usuario[qtdUsuario].setCpf(cpf);
-                    usuario[qtdUsuario].setMatricula(matricula);
-                    usuario[qtdUsuario].setNome(nome);
-                    usuario[qtdUsuario].setTelefone(telefone);
+                    usuario[qtdUsuario]= new Usuario(cpf, nome, matricula, telefone);
                     qtdUsuario++;
+                    System.in.read();
                 } else {
                     System.out.printf("Posição"+qtdUsuario+"ocupada!"); 
+                    System.in.read();
                 }
             }
             
@@ -149,15 +156,16 @@ public class Main {
         } while (aux2 != 0);
     }
     
-    public static void CadastrarLivro(){
+    public static void CadastrarLivro() throws IOException{
         
-         if(qtdLivro < 30){ // Verificação se o vetor já está cheio
+        System.out.println("-----CADASTRO DE NOVO LIVRO-----");
+        if(qtdLivro < 30){ // Verificação se o vetor já está cheio
             System.out.println("Quantos registros deseja cadastrar?");
             int quantidade = input.nextInt();
             
-            for (int i = 0; i <=quantidade; i++) { //Loop para percorrer o vetor
+            for (int i = 0; i <quantidade; i++) { //Loop para percorrer o vetor
                 if (livro[i] == null){ // Verifição se determinada posição do vetor está vazia ou não
-                    System.out.printf("Registro "+i+"\n");
+                    System.out.printf("\nREGISTRO "+i+"\n");
                     System.out.println("Código: ");
                     int codigo = input.nextInt();
                     System.out.println("Ano: ");
@@ -173,17 +181,12 @@ public class Main {
                     System.out.println("ISBN: ");
                     String ISBN = input.next();
 
-                    livro[qtdLivro].setCodigo(codigo);
-                    livro[qtdLivro].setAno(ano);
-                    livro[qtdLivro].setEdicao(edicao);
-                    livro[qtdLivro].setTitulo(titulo);
-                    livro[qtdLivro].setAutor(autor);
-                    livro[qtdLivro].setEditora(editora);
-                    livro[qtdLivro].setISBN(ISBN);
+                    livro[qtdLivro]= new Livro(codigo, ano, edicao, titulo, autor, editora, ISBN);
                     qtdLivro++;
-                    
+                    System.in.read();
                 } else {
-                    System.out.printf("Posição"+qtdLivro+"ocupada!");                   
+                    System.out.printf("Posição"+qtdLivro+"ocupada!");
+                    System.in.read();
                 }
             }
             
@@ -255,12 +258,42 @@ public class Main {
         } while (aux2 != 0);
     }
     
-    public static void PesquisarAluno(){
+    public static void PesquisarAluno() throws IOException{
+        System.out.println("-----PESQUISA DE ALUNO(MATRÍCULA)-----");
+        System.out.println("Informe a matrícula do aluno: ");
+        int matricula = input.nextInt();
+        
+        for (int i = 0; i < qtdUsuario; i++) {
+            if(usuario[i].getMatricula() == matricula){
+                System.out.println("-----RESULTADO-----");
+                System.out.printf("CPF:"+usuario[i].getCpf()+"\n");
+                System.out.printf("Nome:"+usuario[i].getNome()+"\n");
+                System.out.printf("Telefone:"+usuario[i].getTelefone()+"\n");
+                System.out.printf("Posição no vetor:"+i+"\n");
+                System.in.read();
+            }
+        }
         
     }
     
-    public static void PesquisarLivro(){
+    public static void PesquisarLivro() throws IOException{
+        System.out.println("-----PESQUISA DE LIVRO(CÓDIGO)-----");
+        System.out.println("Informe o código do livro: ");
+        int codigo = input.nextInt();
         
+        System.out.println("-----RESULTADO-----");
+        for (int i = 0; i < qtdLivro; i++) {
+            if(livro[i].getCodigo() == codigo){
+                System.out.printf("CPF:"+livro[i].getTitulo()+"\n");
+                System.out.printf("Autor(a):"+livro[i].getAutor()+"\n");
+                System.out.printf("Ano:"+livro[i].getAno()+"\n");
+                System.out.printf("Edição:"+livro[i].getEdicao()+"\n");
+                System.out.printf("Editora:"+livro[i].getEditora()+"\n");
+                System.out.printf("ISBN:"+livro[i].getISBN()+"\n");
+                System.out.printf("Posição no vetor:"+i+"\n");
+                System.in.read();
+            }
+        }
     }
     
     public static void RealizarEmprestimo(){
@@ -271,8 +304,36 @@ public class Main {
         
     }
     
-    public static void Relatorio(){
-        
+    public static void Relatorio(int escolha){
+        switch (escolha){
+            case 1:
+                System.out.println("-----LISTAGEM DE ALUNOS CADASTRADOS-----");
+                for (int i = 0; i <= qtdUsuario; i++) {
+                    System.out.printf("\nREGISTRO "+(i+1)+":\n");
+                    System.out.printf("Matrícula: "+usuario[i].getMatricula());
+                    System.out.printf("CPF: "+usuario[i].getCpf());
+                    System.out.printf("Nome: "+usuario[i].getNome());
+                    System.out.printf("Telefone: "+usuario[i].getTelefone());
+                }
+                break;
+            case 2:
+                System.out.println("-----LISTAGEM DE LIVROS CADASTRADOS-----");
+                for (int i = 0; i < qtdLivro; i++) {
+                    System.out.printf("\nREGISTRO "+(i+1)+":\n");
+                    System.out.println("Código: "+livro[i].getCodigo());
+                    System.out.println("Título: "+livro[i].getTitulo());
+                    System.out.println("Autor(a): "+livro[i].getAutor());
+                    System.out.println("Edição: "+livro[i].getEdicao());
+                    System.out.println("Ano: "+livro[i].getAno());
+                }
+                break;
+            case 3:
+                System.out.println("-----LISTAGEM DE LIVROS EMPRESTADOS-----");
+                break;
+            default:
+                System.out.println("Opção inválida!");
+                break;
+        }
     }
     
 }
