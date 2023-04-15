@@ -1,6 +1,7 @@
 package gerenciamento.biblioteca;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,8 +9,10 @@ public class Main {
     
     static Usuario usuario[] = new Usuario[30];
     static Livro livro[] = new Livro[30];
+    static Emprestimo emprestimo[] = new Emprestimo[30];
     static int qtdUsuario = 0;
     static int qtdLivro = 0;
+    static int qtdEmprestimo = 0;
     static Scanner input = new Scanner (System.in);
     static int aux = 0;
     static int aux2 = 0;
@@ -297,6 +300,15 @@ public class Main {
     }
     
     public static void RealizarEmprestimo(){
+        System.out.println("-----REALIZAR EMPRÉSTIMO-----");
+        
+        for (int i = 0; i < 10; i++) {
+            if(emprestimo[i]!= null){
+                System.out.println("Data de emprestimo:");
+                System.out.printf("Data previsão de entrega: ");
+
+            }
+        }
         
     }
     
