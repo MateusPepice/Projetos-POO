@@ -13,12 +13,16 @@ public class Emprestimo {
     public Emprestimo() {
     }
 
-    public Emprestimo(Date dataDeEmprestimo, Date dataPrevistaDeDevolucao, Date dataDeEntregaReal, String situacao) {
+    public Emprestimo(Date dataDeEmprestimo, Date dataPrevistaDeDevolucao, Date dataDeEntregaReal, String situacao, Usuario usuario, Livro livro) {
         this.dataDeEmprestimo = dataDeEmprestimo;
         this.dataPrevistaDeDevolucao = dataPrevistaDeDevolucao;
         this.dataDeEntregaReal = dataDeEntregaReal;
         this.situacao = situacao;
+        this.usuario = usuario;
+        this.livro = livro;
     }
+
+    
 
     public Date getDataDeEmprestimo() {
         return dataDeEmprestimo;
@@ -50,6 +54,22 @@ public class Emprestimo {
 
     public void setSituacao(String situacao) {
         this.situacao = situacao;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Livro getLivro() {
+        return livro;
+    }
+
+    public void setLivro(Livro livro) {
+        this.livro = livro;
     }
     
 }
