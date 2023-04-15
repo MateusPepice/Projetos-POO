@@ -1,4 +1,4 @@
-package emprestimo;
+package gerenciamento.biblioteca;
 
 public class Usuario {
     private long cpf;

@@ -1,4 +1,4 @@
-package emprestimo;
+package gerenciamento.biblioteca;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -32,7 +32,7 @@ public class Main {
                     System.out.println("Quantos registros deseja cadastrar?");
                     quantidade = input.nextInt();
                     
-                    for (int i = qtdUsuario; i < 30; i++) {
+                    for (int i = qtdUsuario; i <quantidade && i<30; i++) {
                         System.out.println("Informe CPF: ");
                         long cpf = input.nextLong();
                         System.out.println("Informe matrícula: ");
@@ -42,7 +42,11 @@ public class Main {
                         System.out.println("Informe telefone: ");
                         String telefone = input.next();
                         
-                        
+                        usuario.setCpf(cpf);
+                        usuario.setMatricula(matricula);
+                        usuario.setNome(nome);
+                        usuario.setTelefone(telefone);
+                        qtdUsuario++;
                     }
                     break;
                 case 2:

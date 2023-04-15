@@ -1,4 +1,4 @@
-package emprestimo;
+package gerenciamento.biblioteca;
 
 import java.util.Date;
 

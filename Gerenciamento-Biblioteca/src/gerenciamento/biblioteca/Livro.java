@@ -1,4 +1,4 @@
-package emprestimo;
+package gerenciamento.biblioteca;
 
 public class Livro {
     private int codigo;
