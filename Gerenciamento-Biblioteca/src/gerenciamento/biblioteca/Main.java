@@ -19,8 +19,6 @@ public class Main {
         int escolha_9 = 0;
         int quantidade = 0;
         
-        int TESTE;
-        
         do{
             System.out.println("1 - Cadastrar aluno");
             System.out.println("2 - Editar aluno");
