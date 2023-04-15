@@ -13,10 +13,13 @@ public class Main {
     static int aux = 0;
     static int aux2 = 0;
     
+    
     public static void main(String[] args) {
         int escolha = 0;
         int escolha_9 = 0;
         int quantidade = 0;
+        
+        int TESTE;
         
         do{
             System.out.println("1 - Cadastrar aluno");
