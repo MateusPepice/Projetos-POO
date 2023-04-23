@@ -1,4 +1,4 @@
-package gerenciamento.biblioteca;
+package gerenciamento;
     
 public class Livro {
     private int codigo;

@@ -1,10 +1,13 @@
-package gerenciamento.biblioteca;
+package gerenciamento;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class Usuario {
     private long cpf;
     private String nome;
     private int matricula;
-    private String telefone; 
+    private String telefone;
 
     public Usuario() {
     }

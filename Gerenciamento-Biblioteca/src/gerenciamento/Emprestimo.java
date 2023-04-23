@@ -1,4 +1,4 @@
-package gerenciamento.biblioteca;
+package gerenciamento;
 
 import java.util.Date;
 
