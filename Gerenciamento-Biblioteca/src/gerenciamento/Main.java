@@ -4,6 +4,7 @@ import gerenciamento.Emprestimo;
 import gerenciamento.Livro;
 import gerenciamento.Usuario;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -185,7 +186,7 @@ public class Main {
             System.out.println("Codigo do livro:");
             codigo = input.nextInt();
             
-            System.out.println("-----EDITAR LIVRO-----");
+            System.out.println("-----EDITAR LIVROS-----");
             
                 System.out.println("1 - Editar código");
                 System.out.println("2 - Editar ano");
@@ -252,6 +253,8 @@ public class Main {
         
         int matricula =0;
         
+        System.out.println("-----PESQUISAR ALUNO-----");
+        
         if(usuarios.isEmpty()){
             System.out.println("Sem alunos cadastrados!");
         }else{
@@ -270,6 +273,8 @@ public class Main {
     public static void PesquisarLivro() throws IOException{
         
         int codigo = 0;
+        
+        System.out.println("-----PESQUISAR LIVRO-----");
         
         if(livros.isEmpty()){
             System.out.println("Sem livros cadastrados!");
@@ -291,11 +296,56 @@ public class Main {
     }
     
     public static void RealizarEmprestimo(){
+        int dia = 0;
+        int mes = 0;
+        int ano = 0;
+        int posicaoLivro = 0;
+        int posicaoAluno = 0;
         
+        System.out.println("-----EMPRÉSTIMO DE LIVROS-----");
         
+        System.out.println("Data de empréstimo: ");
+            System.out.println("Dia:");
+            dia = input.nextInt();
+            System.out.println("Mês:");
+            mes = input.nextInt();
+            System.out.println("Ano:");
+            ano = input.nextInt();
+        emprestimos.get(usuarios.size()).setDataDeEmprestimo(LocalDate.MIN);
+        
+            
+        System.out.println("Matrícula do aluno: ");
+        int matricula = input.nextInt();
+        System.out.println("Código do livro: ");
+        int codigo = input.nextInt();
+        
+        posicaoAluno = usuarios.indexOf(matricula);
+        if(posicaoAluno < 0){
+            System.out.println("Aluno não encontrado!");
+        }else{
+            emprestimos.get(usuarios.size()).setUsuario(usuarios.get(posicaoAluno));
+        }
+        
+        posicaoLivro = livros.indexOf(codigo);
+        if(posicaoLivro < 0){
+            System.out.println("Livro não encotrado!");
+        }else{
+            emprestimos.get(usuarios.size()).setLivro(livros.get(posicaoLivro));
+        }
+
     }
     
     public static void RealizarDevolucao(){
+        
+        int codigo = 0;
+        int matricula = 0;
+        
+        System.out.println("-----DEVOLUÇÃO DE LIVROS-----");
+        
+        System.out.println("Codigo livro emprestado: ");
+        codigo = input.nextInt();
+        System.out.println("Matricula aluno responsável: ");
+        matricula = input.nextInt(); 
         
     }
     
@@ -304,9 +354,11 @@ public class Main {
         
         switch(escolha){
             case 1 ->{ //Listagem de alunos
+                
                 if(usuarios.isEmpty()){
                     System.out.println("Sem alunos cadastrados!");
                 } else{
+                    System.out.println("-----LISTAGEM DE ALUNOS-----");
                     for(Usuario aluno: usuarios){
                         System.out.printf("CPF......: "+aluno.getCpf()+"\n");
                         System.out.printf("Nome.....: "+aluno.getNome()+"\n");
@@ -314,28 +366,45 @@ public class Main {
                         System.out.printf("Telefone.: "+aluno.getTelefone()+"\n\n");
                     }   
                 }
+                
             }
             case 2 ->{ // Listagem de livros
+                
                 if(livros.isEmpty()){
                     System.out.println("Sem livros cadastrados!");
                 }else {
-                    for(Livro livros: livros){
-                        System.out.printf("Codigo..: "+livros.getCodigo()+"\n");
-                        System.out.printf("Ano.....: "+livros.getAno()+"\n");
-                        System.out.printf("Edição..: "+livros.getEdicao()+"\n");
-                        System.out.printf("Título..: "+livros.getTitulo()+"\n");
-                        System.out.printf("Autor(a): "+livros.getAutor()+"\n");
-                        System.out.printf("Editora.: "+livros.getEditora()+"\n");
-                        System.out.printf("ISBN....: "+livros.getISBN()+"\n\n");
+                    System.out.println("-----LISTAGEM DE LIVROS-----");
+                    for(Livro livro: livros){
+                        System.out.printf("Codigo..: "+livro.getCodigo()+"\n");
+                        System.out.printf("Ano.....: "+livro.getAno()+"\n");
+                        System.out.printf("Edição..: "+livro.getEdicao()+"\n");
+                        System.out.printf("Título..: "+livro.getTitulo()+"\n");
+                        System.out.printf("Autor(a): "+livro.getAutor()+"\n");
+                        System.out.printf("Editora.: "+livro.getEditora()+"\n");
+                        System.out.printf("ISBN....: "+livro.getISBN()+"\n\n");
                     }
                 }
+                
             }
             case 3 ->{ // Listagem de empréstimos
-                for(Emprestimo emprestado: emprestimos){
-                    System.out.println(emprestado);
+                
+                if(emprestimos.isEmpty()){
+                    System.out.println("Sem empréstimos realizados!");
+                }else{
+                    System.out.println("-----LISTAGEM DE EMPRÉSTIMOS-----");
+                    for(Emprestimo emprestado: emprestimos){
+                        System.out.printf("Data de empéstimo....: "+emprestado.getDataDeEmprestimo()+"\n");
+                        System.out.printf("Previsão de devolução: "+emprestado.getDataPrevistaDeDevolucao()+"\n");
+                        System.out.printf("Data de devolução....: "+emprestado.getDataDeEntregaReal()+"\n");
+                        System.out.printf("Aluno responsável....: "+emprestado.getUsuario()+"\n");
+                        System.out.printf("Livro emprestado.....: "+emprestado.getLivro()+"\n\n");
+                    }
                 }
+                
             }
             default -> System.out.println("Opção inválida!");
         }
+        
     }
+    
 }

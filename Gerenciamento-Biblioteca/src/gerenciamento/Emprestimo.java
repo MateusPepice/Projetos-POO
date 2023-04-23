@@ -1,11 +1,11 @@
 package gerenciamento;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Emprestimo {
-    private Date dataDeEmprestimo;
-    private Date dataPrevistaDeDevolucao;
-    private Date dataDeEntregaReal;
+    private LocalDate dataDeEmprestimo;
+    private LocalDate dataPrevistaDeDevolucao;
+    private LocalDate dataDeEntregaReal;
     private String situacao;
     private Usuario usuario;
     private Livro livro;
@@ -13,7 +13,7 @@ public class Emprestimo {
     public Emprestimo() {
     }
 
-    public Emprestimo(Date dataDeEmprestimo, Date dataPrevistaDeDevolucao, Date dataDeEntregaReal, String situacao, Usuario usuario, Livro livro) {
+    public Emprestimo(LocalDate dataDeEmprestimo, LocalDate dataPrevistaDeDevolucao, LocalDate dataDeEntregaReal, String situacao, Usuario usuario, Livro livro) {
         this.dataDeEmprestimo = dataDeEmprestimo;
         this.dataPrevistaDeDevolucao = dataPrevistaDeDevolucao;
         this.dataDeEntregaReal = dataDeEntregaReal;
@@ -24,27 +24,28 @@ public class Emprestimo {
 
     
 
-    public Date getDataDeEmprestimo() {
+    public LocalDate getDataDeEmprestimo() {
         return dataDeEmprestimo;
     }
 
-    public void setDataDeEmprestimo(Date dataDeEmprestimo) {
+    public void setDataDeEmprestimo(LocalDate dataDeEmprestimo) {
         this.dataDeEmprestimo = dataDeEmprestimo;
+        
     }
 
-    public Date getDataPrevistaDeDevolucao() {
+    public LocalDate getDataPrevistaDeDevolucao() {
         return dataPrevistaDeDevolucao;
     }
 
-    public void setDataPrevistaDeDevolucao(Date dataPrevistaDeDevolucao) {
+    public void setDataPrevistaDeDevolucao(LocalDate dataPrevistaDeDevolucao) {
         this.dataPrevistaDeDevolucao = dataPrevistaDeDevolucao;
     }
 
-    public Date getDataDeEntregaReal() {
+    public LocalDate getDataDeEntregaReal() {
         return dataDeEntregaReal;
     }
 
-    public void setDataDeEntregaReal(Date dataDeEntregaReal) {
+    public void setDataDeEntregaReal(LocalDate dataDeEntregaReal) {
         this.dataDeEntregaReal = dataDeEntregaReal;
     }
 
