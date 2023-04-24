@@ -1,19 +1,15 @@
 package gerenciamento;
 
-import gerenciamento.Emprestimo;
-import gerenciamento.Livro;
-import gerenciamento.Usuario;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     
-    static ArrayList<Usuario> usuarios = new ArrayList();
-    static ArrayList<Livro> livros = new ArrayList<Livro>();
-    static ArrayList<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
+    static ArrayList<Usuario> usuarios = new ArrayList<>();
+    static ArrayList<Livro> livros = new ArrayList<>();
+    static ArrayList<Emprestimo> emprestimos = new ArrayList<>();
     
     static Scanner input = new Scanner (System.in);
     
@@ -36,44 +32,26 @@ public class Main {
             escolha = input.nextInt();
 
             switch(escolha){
-                case 1:
-                    CadastrarAlunos();
-                    break;
-                case 2:
-                    EditarAluno();
-                    break;
-                case 3:
-                    CadastrarLivro();
-                    break;
-                case 4:
-                    EditarLivro();
-                    break;
-                case 5:
-                    PesquisarAluno();
-                    break;
-                case 6:
-                    PesquisarLivro();
-                    break;
-                case 7:
-                    RealizarEmprestimo();
-                    break;
-                case 8:
-                    RealizarDevolucao();
-                    break;
-                case 9:
+                case 1 -> CadastrarAlunos();
+                case 2 -> EditarAluno();
+                case 3 -> CadastrarLivro();
+                case 4 -> EditarLivro();
+                case 5 -> PesquisarAluno();
+                case 6 -> PesquisarLivro();
+                case 7 -> RealizarEmprestimo();
+                case 8 -> RealizarDevolucao();
+                case 9 -> {
                     System.out.println("1 - Listagem de alunos cadastrados");
                     System.out.println("2 - Listagem de livros cadastrados");
                     System.out.println("3 - Listagem de livros emprestados");
                     escolha_9 = input.nextInt();
                     Relatorio(escolha_9);
-                    break;
-                case 0:
-                    System.out.println("Saindo do sistema!");
-                    break;
-                default:
+                }
+                case 0 -> System.out.println("Saindo do sistema!");
+                default -> {
                     System.out.println("Opção inválida!");
                     System.in.read();
-                    break;
+                }
             }
         } while(escolha != 0);
     }
@@ -82,20 +60,18 @@ public class Main {
         System.out.println("-----CADASTRO DE ALUNO-----");
         
             System.out.println("Informe o CPF:");
-            input.nextLine();
             long cpf = input.nextLong();
             
             System.out.println("Informe o nome:");
             input.nextLine();
-            String nome = input.next();
+            String nome = input.nextLine();
             
             System.out.println("Informe o matrícula:");
-            input.nextLine();
             int matricula = input.nextInt();
             
             System.out.println("Informe o Telefone:");
             input.nextLine();
-            String telefone = input.next();
+            String telefone = input.nextLine();
             
             
         usuarios.add(new Usuario(cpf, nome, matricula, telefone));
@@ -112,13 +88,17 @@ public class Main {
             System.out.println("Informe a edição:");
             int edicao = input.nextInt();
             System.out.println("Informe o título:");
-            String titulo = input.next();
+            input.nextLine();
+            String titulo = input.nextLine();
             System.out.println("Informe o autor:");
-            String autor = input.next();
+            input.nextLine();
+            String autor = input.nextLine();
             System.out.println("Informe a editora:");
-            String editora = input.next();
+            input.nextLine();
+            String editora = input.nextLine();
             System.out.println("Informe o ISBN:");
-            String isbn = input.next();
+            input.nextLine();
+            String isbn = input.nextLine();
             
         livros.add(new Livro(codigo, ano, edicao, titulo, autor, editora, isbn));
         
@@ -126,14 +106,17 @@ public class Main {
     
     public static void EditarAluno(){
         
-        long matricula = 0;
+        int matricula = 0;
         int escolha = 0;
+        int i = 0;
+        int posicao = 0;
         
         if(usuarios.isEmpty()) { // ArrayList sem alunos cadastrados
             System.out.println("Sem alunos cadastrados!");
+            return;
         } else {
             System.out.println("Matricula do aluno: "); //Chave primária de um registro qualquer
-            matricula = input.nextLong();
+            matricula = input.nextInt();
             
             System.out.println("-----EDITAR ALUNOS-----");
                 
@@ -144,8 +127,13 @@ public class Main {
                 escolha = input.nextInt();
         }
         
-        int posicao = usuarios.indexOf(matricula); // Descobrindo o indice dentro do ArrayList
-        
+        for(Usuario alunos: usuarios){ // Descobrindo o indice dentro do ArrayList
+            i++;
+            if(alunos.getMatricula()== matricula){
+               posicao = i-1;
+            }
+        } 
+
         switch(escolha){
             case 1 -> {
                 System.out.printf("Registro antigo: "+usuarios.get(posicao).getCpf()+"\n");
@@ -179,9 +167,12 @@ public class Main {
         
         int codigo = 0;
         int escolha = 0;
+        int posicao = 0;
+        int i = 0;
         
         if(livros.isEmpty()){
             System.out.println("Sem livros cadastrados!");
+            return;
         } else {
             System.out.println("Codigo do livro:");
             codigo = input.nextInt();
@@ -198,7 +189,12 @@ public class Main {
                 escolha = input.nextInt();
         }
         
-        int posicao = livros.indexOf(codigo);
+        for(Livro livro: livros){ // Descobrindo o indice dentro do ArrayList
+            i++;
+            if(livro.getCodigo() == codigo){
+               posicao = i-1;
+            }
+        } 
         
         switch(escolha){
             case 1 -> {
@@ -249,20 +245,28 @@ public class Main {
        
     }
     
-    public static void PesquisarAluno() throws IOException{
+    public static void PesquisarAluno(){
         
         int matricula =0;
+        int posicao = 0;
+        int i = 0;
         
         System.out.println("-----PESQUISAR ALUNO-----");
         
         if(usuarios.isEmpty()){
             System.out.println("Sem alunos cadastrados!");
+            return;
         }else{
             System.out.println("Informe a matrícula do aluno: ");
             matricula = input.nextInt();
         }
         
-        int posicao = usuarios.indexOf(matricula);
+        for(Usuario alunos: usuarios){ // Descobrindo o indice dentro do ArrayList
+            i++;
+            if(alunos.getMatricula()== matricula){
+               posicao = i-1;
+            }
+        } 
         
         System.out.printf("CPF......: "+usuarios.get(posicao).getCpf()+"\n");
         System.out.printf("Nome.....: "+usuarios.get(posicao).getNome()+"\n");
@@ -270,20 +274,28 @@ public class Main {
         System.out.printf("Telefone.: "+usuarios.get(posicao).getTelefone()+"\n\n");
     }
     
-    public static void PesquisarLivro() throws IOException{
+    public static void PesquisarLivro(){
         
         int codigo = 0;
+        int posicao = 0;
+        int i = 0;
         
         System.out.println("-----PESQUISAR LIVRO-----");
         
         if(livros.isEmpty()){
             System.out.println("Sem livros cadastrados!");
+            return;
         }else{
             System.out.println("Informe o código do livro: ");
             codigo = input.nextInt();
         }
         
-        int posicao = livros.indexOf(codigo);
+        for(Livro livro: livros){ // Descobrindo o indice dentro do ArrayList
+            i++;
+            if(livro.getCodigo() == codigo){
+               posicao = i-1;
+            }
+        } 
         
         System.out.printf("Codigo..: "+livros.get(posicao).getCodigo()+"\n");
         System.out.printf("Ano.....: "+livros.get(posicao).getAno()+"\n");
@@ -296,56 +308,76 @@ public class Main {
     }
     
     public static void RealizarEmprestimo(){
-        int dia = 0;
-        int mes = 0;
-        int ano = 0;
+        
         int posicaoLivro = 0;
         int posicaoAluno = 0;
+        int codigoEmprestimo;
+        int matricula;
+        int codigoLivro;
+        int i = 0;
         
         System.out.println("-----EMPRÉSTIMO DE LIVROS-----");
         
-        System.out.println("Data de empréstimo: ");
-            System.out.println("Dia:");
-            dia = input.nextInt();
-            System.out.println("Mês:");
-            mes = input.nextInt();
-            System.out.println("Ano:");
-            ano = input.nextInt();
-        emprestimos.get(usuarios.size()).setDataDeEmprestimo(LocalDate.MIN);
         
-            
+        LocalDate data = LocalDate.now();
+        Emprestimo dataAuxiliar = new Emprestimo();
+        dataAuxiliar.setDataDeEmprestimo(data);
+        
+        emprestimos.add(dataAuxiliar);
+        
         System.out.println("Matrícula do aluno: ");
-        int matricula = input.nextInt();
+        matricula = input.nextInt();
         System.out.println("Código do livro: ");
-        int codigo = input.nextInt();
+        codigoLivro = input.nextInt();
+        System.out.println("Código de empréstimo:");
+        codigoEmprestimo = input.nextInt();
         
-        posicaoAluno = usuarios.indexOf(matricula);
+        for(Usuario alunos: usuarios){ // Descobrindo o indice dentro do ArrayList
+            i++;
+            if(alunos.getMatricula()== matricula){
+               posicaoAluno= i-1;
+            }
+        } 
+        for(Livro livro: livros){ // Descobrindo o indice dentro do ArrayList
+            i++;
+            if(livro.getCodigo() == codigoLivro){
+               posicaoLivro = i-1;
+            }
+        } 
+        
         if(posicaoAluno < 0){
             System.out.println("Aluno não encontrado!");
-        }else{
-            emprestimos.get(usuarios.size()).setUsuario(usuarios.get(posicaoAluno));
-        }
-        
-        posicaoLivro = livros.indexOf(codigo);
-        if(posicaoLivro < 0){
+            return;
+        }else if(posicaoLivro < 0){
             System.out.println("Livro não encotrado!");
+            return;
         }else{
-            emprestimos.get(usuarios.size()).setLivro(livros.get(posicaoLivro));
+            emprestimos.get(usuarios.size()-1).setUsuario(usuarios.get(posicaoAluno));
+            emprestimos.get(usuarios.size()-1).setLivro(livros.get(posicaoLivro));
+            emprestimos.get(usuarios.size()-1).setCodigoEmprestimo(codigoEmprestimo);
+            
         }
-
+    
     }
     
     public static void RealizarDevolucao(){
         
-        int codigo = 0;
-        int matricula = 0;
+        int codigo;
+        int posicaoEmprestimo = 0;
+        int i = 0;
         
         System.out.println("-----DEVOLUÇÃO DE LIVROS-----");
         
-        System.out.println("Codigo livro emprestado: ");
+        System.out.println("Informe o código do empréstimo: ");
         codigo = input.nextInt();
-        System.out.println("Matricula aluno responsável: ");
-        matricula = input.nextInt(); 
+        
+        for(Emprestimo devolucao: emprestimos){
+            i++;
+            if(devolucao.getCodigoEmprestimo() == codigo){
+                posicaoEmprestimo = i-1;
+            }
+        }
+        emprestimos.remove(posicaoEmprestimo);
         
     }
     
@@ -398,6 +430,7 @@ public class Main {
                         System.out.printf("Data de devolução....: "+emprestado.getDataDeEntregaReal()+"\n");
                         System.out.printf("Aluno responsável....: "+emprestado.getUsuario()+"\n");
                         System.out.printf("Livro emprestado.....: "+emprestado.getLivro()+"\n\n");
+                        System.out.printf("Situação.............: "+emprestado.getSituacao()+"\n\n");
                     }
                 }
                 
