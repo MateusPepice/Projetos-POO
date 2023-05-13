@@ -2,7 +2,7 @@
 
 Projeto básico de como funcionaria um sistema de gerenciamento de contas bancárias, baseada em algumas regras de negócio e nos princípios da de _**"Abstração"**_ (algumas literaturas colocam abstração como sendo um conceito dentro de encapsulamento, e não um princípio em si) e _**Encapsulamento**_
 
-#### Não há integração no banco de dados e, portanto, sua utilização será pela manipulação da memória do computador!!
+### Não há integração no banco de dados e, portanto, sua utilização será pela manipulação da memória do computador!!
 
 Para correta compilação, é necessário uma IDE (Integrated Development Environment - Ambiente de Desenvolvimento Integrado)
 
