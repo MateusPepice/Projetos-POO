@@ -1,4 +1,4 @@
-package conta.bancaria;
+package main;
 
 import controle.CadastroClientes;
 import controle.CadastroPessoa;
