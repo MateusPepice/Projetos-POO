@@ -14,8 +14,10 @@ Para correta compilação, é necessário uma IDE (Integrated Development Enviro
 > Regras de Negócio utilizadas:
   - Só é possível fechar uma conta com saldo 0;
   - Só é possível excluir um cliente que não tenha conta em aberto;
-  - Taxa de manutenção (pagarMensal):\n
-      {CC (Conta Corrente): R$ 25}
+  - Taxa de manutenção (pagarMensal):
+  
+      -> CC (Conta Corrente): R$ 25}
   - Benefício de abertura de conta:
+  
       {CC (Conta corrente): R$ 100}
       {CP (Conta Poupança): R$ 200}
