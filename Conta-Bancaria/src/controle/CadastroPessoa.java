@@ -3,7 +3,6 @@ package controle;
 import java.util.ArrayList;
 import modelo.Pessoa;
 import util.Input;
-import controle.CadastroClientes;
 
 public class CadastroPessoa {
     private static ArrayList<Pessoa> listaPessoas = new ArrayList<>();
@@ -28,6 +27,7 @@ public class CadastroPessoa {
         System.out.println("\nCadastro realizado!");
     }
     
+    // Método utilizável em diversos outros métodos
     public static Pessoa pesquisarPessoa(){
         System.out.println("Informe o CPF:");
         String cpf = Input.nextLine();
@@ -42,6 +42,7 @@ public class CadastroPessoa {
         return null;
     }
     
+    // Chama o método PesquisaExistencia
     public static void remover(){
         Pessoa pessoa = pesquisarPessoa();
         boolean pessoa_com_conta = CadastroClientes.pesquisarExistencia(pessoa);

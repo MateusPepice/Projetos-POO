@@ -17,6 +17,7 @@ public class Pessoa{
         this.remuneracao = remuneracao;
     }
 
+    // Métodos Especiais
     public String getNome() {
         return nome;
     }

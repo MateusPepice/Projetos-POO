@@ -49,7 +49,7 @@ public class CadastroClientes {
         System.out.println("\nCadastro realizado!");
     }
     
-    // Método utilizável em: remover, editar
+    // Método utilizável em: fecharConta, editar, depositar, sacar, pagarMensal, listarContas e editarConta
     public static Contas pesquisar(){
         System.out.println("Informe o número da conta:");
         int numero = Input.nextInt();
@@ -63,6 +63,10 @@ public class CadastroClientes {
         return null;
     }
     
+    /* Só pode ser fechada caso: 
+        - exista a conta na lista
+        - o saldo esteja zerado
+    */
     public static void fecharConta(){
         Contas conta = pesquisar();
         
@@ -89,6 +93,7 @@ public class CadastroClientes {
         conta.toString();
     }
     
+    
     public static void depositar(){
         Contas conta = pesquisar();
         
@@ -104,6 +109,7 @@ public class CadastroClientes {
         listaContas.remove(conta);
     }
     
+    // Só podemos sacar caso haja saldo suficiente na conta
     public static void sacar(){
         Contas conta = pesquisar();
         
@@ -125,6 +131,8 @@ public class CadastroClientes {
 
     }
     
+    // Taxa de manutenção do cartão
+    
     public static void pagarMensal(){
         Contas conta = pesquisar();
         if(conta == null){
@@ -135,6 +143,7 @@ public class CadastroClientes {
         listaContas.remove(conta);
     }
     
+    // Só podemos editar partes especificas da conta
     public static void editarConta(){
         Contas conta = pesquisar();
         
@@ -145,6 +154,7 @@ public class CadastroClientes {
         listaContas.add(listaContas.indexOf(conta), conta);
     }
     
+    // Todas as contas cadastradas na lista
     public static void listarContas(){
         if(listaContas == null || listaContas.isEmpty()){
             System.out.println("\nNão há registros cadastrados!");
@@ -156,6 +166,8 @@ public class CadastroClientes {
         }
     }
     
+    // Método especifico para ser utilizado na classe CadastroPessoa
+    // Verifica se a pessoa que está sendo excluida tem uma conta em aberto
     public static boolean pesquisarExistencia(Pessoa pessoa){
         
         for (Contas listaConta : listaContas) {

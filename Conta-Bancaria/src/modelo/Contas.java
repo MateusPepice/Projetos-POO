@@ -21,6 +21,7 @@ public class Contas{
         
     }
 
+    // Métodos Especiais
     public int getNumConta() {
         return numConta;
     }
@@ -66,6 +67,7 @@ public class Contas{
         return "Contas{" + "numConta=" + numConta + ", tipo=" + tipo + ", nome=" + dono.getNome() + ", saldo=" + saldo + ", aberta=" + aberta + '}';
     }
     
+    // Métodos Abstratos
     public void deposito(double deposito){
         this.saldo = saldo + deposito;
     }
