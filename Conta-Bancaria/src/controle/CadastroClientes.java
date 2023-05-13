@@ -41,7 +41,7 @@ public class CadastroClientes {
         if("CC".equals(conta.getTipo())){
             conta.setSaldo(100);
         } else if("CP".equals(conta.getTipo())){
-            conta.setSaldo(500);
+            conta.setSaldo(200);
         }
         
         
@@ -138,9 +138,16 @@ public class CadastroClientes {
         if(conta == null){
             return;
         }
-        conta.pagarMensal(30);
-        listaContas.add(listaContas.indexOf(conta), conta);
-        listaContas.remove(conta);
+        if(conta.getTipo().equals("CC")){
+            conta.pagarMensal(25);
+            listaContas.add(listaContas.indexOf(conta), conta);
+            listaContas.remove(conta);
+            return;
+        }else{
+            System.out.println("\nNão há cobrança de manutenção em conta poupança");
+            return;
+        }
+
     }
     
     // Só podemos editar partes especificas da conta
