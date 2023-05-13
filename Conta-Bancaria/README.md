@@ -19,5 +19,6 @@ Para correta compilação, é necessário uma IDE (Integrated Development Enviro
       -> CC (Conta Corrente): R$ 25}
   - Benefício de abertura de conta:
   
-      {CC (Conta corrente): R$ 100}
-      {CP (Conta Poupança): R$ 200}
+      -> CC (Conta corrente): R$ 100
+      
+      -> CP (Conta Poupança): R$ 200
