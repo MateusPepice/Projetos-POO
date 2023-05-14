@@ -1,4 +1,4 @@
-package heranca;
+package main;
 
 import controle.CadastroAluno;
 import controle.CadastroDiretor;
