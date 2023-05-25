@@ -16,5 +16,13 @@ public class CadastroPessoa {
         pessoa_qualquer.setSenha(Input.nextLine());
         System.out.println("CPF..:");
         pessoa_qualquer.setCpf(Input.nextLine());
+        
+        // ----> ERRO DESCONHECIDO!! <----
+        System.out.println("CIDADE:");
+        pessoa_qualquer.getEndereco().setCidade(Input.nextLine());
+        System.out.println("RUA...:");
+        pessoa_qualquer.getEndereco().setRua(Input.nextLine());
+        System.out.println("NUMERO:");
+        pessoa_qualquer.getEndereco().setNumero(Input.nextLine());
     }
 }
