@@ -8,7 +8,7 @@ public class Pessoa {
     private String cpf;
 
     public Pessoa() {
-        
+        this.endereco = new Endereco();
     }
 
     public Pessoa(Endereco endereco, String nome, String login, String senha, String email, String cpf) {

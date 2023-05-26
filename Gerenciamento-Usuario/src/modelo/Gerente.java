@@ -33,7 +33,7 @@ public class Gerente extends Funcionario{
 
     @Override
     public String toString() {
-        return "Gerente{" + "departamento=" + departamento + ", bonus=" + bonus + '}';
+        return "Gerente{"+super.toString()+  "departamento=" + departamento + ", bonus=" + bonus + '}';
     }
 
 }

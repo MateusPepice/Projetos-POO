@@ -40,7 +40,7 @@ public class Funcionario extends Pessoa{
     public void setData_admissao(LocalDate data_admissao) {
         this.data_admissao = data_admissao;
     }
-    
+
     
     
     
