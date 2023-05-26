@@ -1,5 +1,7 @@
 package main;
 
+import controle.CadastroCliente;
+import controle.CadastroGerente;
 import controle.CadastroVendedor;
 import java.util.Scanner;
 
@@ -27,6 +29,9 @@ public class Main {
                 case 1 -> cadastroGerente();
                 case 2 -> cadastroVendedor();
                 case 3 -> cadastroCliente();
+                case 4 -> listarGerentes();
+                case 5 -> listarVendedores();
+                case 6 -> listarClientes();
                 case 0 -> System.out.println("\nSAINDO DO SISTEMA!!");
                 default -> System.out.println("\nOPCAO INVALIDA!!");
             }
@@ -35,14 +40,22 @@ public class Main {
     }
     
     public static void cadastroGerente(){
-        
+        CadastroGerente.cadastrar();
     }
-    
     public static void cadastroVendedor(){
         CadastroVendedor.cadastrar();
     }
-    
     public static void cadastroCliente(){
+        CadastroCliente.cadastrar();
+    }
     
+    public static void listarGerentes(){
+        CadastroGerente.listarGerentes();
+    }
+    public static void listarVendedores(){
+        CadastroVendedor.listarVendedores();
+    }
+    public static void listarClientes(){
+        CadastroCliente.listarClientes();
     }
 }
