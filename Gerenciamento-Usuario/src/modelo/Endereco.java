@@ -1,8 +1,8 @@
 package modelo;
 public class Endereco {
-    private String cidade;
-    private String rua;
-    private String numero;
+    protected String cidade;
+    protected String rua;
+    protected String numero;
 
     public Endereco() {
     }

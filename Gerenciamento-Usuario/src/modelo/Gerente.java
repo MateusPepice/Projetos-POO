@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class Gerente extends Funcionario{
-    private String departamento;
-    private double bonus;
+    protected String departamento;
+    protected double bonus;
 
     public Gerente() {
     }

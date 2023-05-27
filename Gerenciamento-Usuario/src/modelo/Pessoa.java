@@ -1,11 +1,11 @@
 package modelo;
-public class Pessoa {
-    private Endereco endereco;
-    private String nome;
-    private String login;
-    private String senha;
-    private String email;
-    private String cpf;
+public abstract class  Pessoa {
+    protected Endereco endereco;
+    protected String nome;
+    protected String login;
+    protected String senha;
+    protected String email;
+    protected String cpf;
 
     public Pessoa() {
         this.endereco = new Endereco();

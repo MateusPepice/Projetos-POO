@@ -1,6 +1,6 @@
 package modelo;
 public class Cliente extends Pessoa{
-    private double limite_credito;
+    protected double limite_credito;
 
     public Cliente() {
     }

@@ -2,10 +2,10 @@ package modelo;
 
 import java.time.LocalDate;
 
-public class Funcionario extends Pessoa{
-    private double salario;
-    private String ctps;
-    private LocalDate data_admissao;
+public abstract class Funcionario extends Pessoa{
+    protected double salario;
+    protected String ctps;
+    protected LocalDate data_admissao;
 
     public Funcionario() {
     }
