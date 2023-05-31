@@ -1,6 +1,6 @@
 package main;
 
-public class JavaApplication17 {
+public class Main {
 
     public static void main(String[] args) {
         
