@@ -10,7 +10,7 @@ public class CadastroProduto {
     public static ArrayList<MedicamentoControlado> medicamentosControlados = new ArrayList<>();
     public static ArrayList<MedicamentoInjetavel> medicamentosInjetaveis = new ArrayList<>();
     
-    public Medicamento setarDados(Medicamento novo_produto){
+    public static Medicamento setarDados(Medicamento novo_produto){
         
         System.out.println("CODIGO............:");
         novo_produto.setCodigo(Input.nextInt());
@@ -28,23 +28,37 @@ public class CadastroProduto {
         novo_produto.setCodigoBarras(Input.nextLine());
         System.out.println("VALOR (R$)........:");
         novo_produto.setValor(Input.nextDouble());
-        
-        
+
         return novo_produto;
     }
 
-    public void cadastroMedicamentoInjetavel(){
+    public static void cadastroMedicamentoInjetavel(){
        MedicamentoInjetavel novo_medicamento = new MedicamentoInjetavel();
        setarDados(novo_medicamento);
        medicamentosInjetaveis.add(novo_medicamento);
        System.out.println("\nCADASTRO DE MEDICAMENTO INJETAVEL REALIZADO!");
     }
     
-    public void cadastroMedicamentoControlado(){
+    public static void cadastroMedicamentoControlado(){
        MedicamentoControlado novo_medicamento = new MedicamentoControlado(); 
         setarDados(novo_medicamento);
         medicamentosControlados.add(novo_medicamento);
         System.out.println("\nCADASTRO DE MEDICAMENTO CONTROLADO REALIZADO!");
     }
     
+    public static void listarProdutos(int tipo){
+        switch(tipo){
+            case 1 -> {
+                for (MedicamentoControlado listaMedicamentosControlado : medicamentosControlados) {
+                    System.out.println(listaMedicamentosControlado);
+                }
+            }
+            case 2 -> {
+                for (MedicamentoInjetavel listarMedicamentosInjetaveis : medicamentosInjetaveis) {
+                    System.out.println(listarMedicamentosInjetaveis);
+                }
+            }
+            default -> System.out.println("\nOPCAO INVALIDA!");
+        }
+    }
 }

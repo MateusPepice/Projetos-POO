@@ -13,7 +13,7 @@ public class CadastroPessoa {
     public static ArrayList<Funcionario> funcionarios = new ArrayList<>();
     public static ArrayList<Cliente> clientes = new ArrayList<>();
     
-    public Pessoa setarDados(Pessoa nova_pessoa){
+    public static Pessoa setarDados(Pessoa nova_pessoa){
         Random aleatorio = new Random();
         nova_pessoa.setCodigo(aleatorio.nextInt(100));
         
@@ -27,7 +27,7 @@ public class CadastroPessoa {
         return nova_pessoa;
     }
     
-    public void cadastroFuncionario(){
+    public static void cadastroFuncionario(){
         Funcionario novo_funcionario = new Funcionario();
         setarDados(novo_funcionario);
         
@@ -38,7 +38,7 @@ public class CadastroPessoa {
         System.out.println("\nCADASTRO DE NOVO FUNCIONARIO REALIZADO!!");
     }
     
-    public void cadastroCliente(){
+    public static void cadastroCliente(){
         Cliente novo_cliente = new Cliente();
         setarDados(novo_cliente);
         
@@ -49,7 +49,7 @@ public class CadastroPessoa {
         System.out.println("\nCADASTRO DE NOVO CLIENTE REALIZADO!!");
     }
     
-    public void listarCadastros(int escolha){
+    public static void listarPessoas(int escolha){
         switch (escolha) {
             case 1 -> {
                 for (Funcionario listaFuncionarios : funcionarios) {
