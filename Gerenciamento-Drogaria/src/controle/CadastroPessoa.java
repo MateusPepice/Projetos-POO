@@ -17,31 +17,34 @@ public class CadastroPessoa {
         Random aleatorio = new Random();
         nova_pessoa.setCodigo(aleatorio.nextInt(100));
         
-        System.out.println("NOME:");
+        System.out.println("NOME....:");
         nova_pessoa.setNome(Input.nextLine());
-        System.out.println("CPF.:");
+        System.out.println("CPF.....:");
         nova_pessoa.setCpf(Input.nextLine());
         System.out.println("DATA DE NASCIMENTO:");
-        nova_pessoa.setDataNascimento(LocalDate.MIN);
-        
-        if(nova_pessoa instanceof Funcionario){
-            System.out.println("CTPS:");
-            ((Funcionario) nova_pessoa).setCtps(Input.nextLine());
-        }
+        nova_pessoa.setDataNascimento(Input.nextLocalDate());
         
         return nova_pessoa;
     }
     
     public void cadastroFuncionario(){
-        Funcionario funcionario = new Funcionario();
-        setarDados(funcionario);
-        funcionarios.add(funcionario);
+        Funcionario novo_funcionario = new Funcionario();
+        setarDados(novo_funcionario);
+        
+        System.out.println("CTPS....:");
+        novo_funcionario.setCtps(Input.nextLine());
+        
+        funcionarios.add(novo_funcionario);
         System.out.println("\nCADASTRO DE NOVO FUNCIONARIO REALIZADO!!");
     }
     
     public void cadastroCliente(){
         Cliente novo_cliente = new Cliente();
         setarDados(novo_cliente);
+        
+        System.out.println("EMAIL...:");
+        novo_cliente.setEmail(Input.nextLine());
+        
         clientes.add(novo_cliente);
         System.out.println("\nCADASTRO DE NOVO CLIENTE REALIZADO!!");
     }
