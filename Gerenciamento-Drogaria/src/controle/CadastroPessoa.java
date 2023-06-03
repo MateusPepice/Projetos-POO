@@ -10,8 +10,7 @@ import modelo.Pessoa;
 import util.Input;
 
 public class CadastroPessoa {
-    public static ArrayList<Funcionario> funcionarios = new ArrayList<>();
-    public static ArrayList<Cliente> clientes = new ArrayList<>();
+    public static ArrayList<Pessoa> pessoas = new ArrayList<>();
     
     public static void setarDados(Pessoa nova_pessoa){
         Random aleatorio = new Random();
@@ -33,7 +32,7 @@ public class CadastroPessoa {
         System.out.println("CTPS....:");
         novo_funcionario.setCtps(Input.nextLine());
         
-        funcionarios.add(novo_funcionario);
+        pessoas.add(novo_funcionario);
         System.out.println("\nCADASTRO DE NOVO FUNCIONARIO REALIZADO!!");
     }
     
@@ -44,36 +43,44 @@ public class CadastroPessoa {
         System.out.println("EMAIL...:");
         novo_cliente.setEmail(Input.nextLine());
         
-        clientes.add(novo_cliente);
+        pessoas.add(novo_cliente);
         System.out.println("\nCADASTRO DE NOVO CLIENTE REALIZADO!!");
     }
     
-    public static void pesquisarCodFuncionario(int cod){
+    public static Pessoa pesquisarCod(int cod){
         
+        if(pessoas.isEmpty()){
+            System.out.println("\nNAO HA REGISTRADO CADASTRADOS!");
+            return null;
+        }
+
+        for (Pessoa pessoa : pessoas) {
+            if(pessoa.equals(cod)){
+                return pessoa;
+            }
+            if(pessoa.equals(cod)){
+                return pessoa;
+            }
+        }
+        System.out.println("\nREGISTRO NAO ENCONTRADO!");
+        return null;
     }
     
     public static void listarPessoas(int escolha){
-        switch (escolha) {
-            case 1 -> {
-                if (funcionarios.isEmpty()){
-                    System.out.println("\nNENHUM REGISTRADO ENCONTRADO!");
-                    return;
-                } 
-
-                for (Funcionario listaFuncionarios : funcionarios) {
-                    System.out.println(listaFuncionarios);
-                }
+        boolean encontrado = true;
+        
+        for (Pessoa lista : pessoas) {
+            if(lista instanceof Funcionario && escolha == 1){
+                System.out.println(lista);
+                encontrado = false;
+            } else if((lista instanceof Cliente) && (escolha == 2)){
+                System.out.println(lista);
+                encontrado = false;
             }
-            case 2 -> {
-                if(clientes.isEmpty()){
-                    System.out.println("\nNENHUM REGISTRADO ENCONTRADO!");
-                    return;
-                }
-
-                for (Cliente listaClientes : clientes) {
-                    System.out.println(listaClientes);
-                }
-            }
+        }
+        
+        if(encontrado){
+            System.out.println("\nNENHUM REGISTRO CADASTRADO!");
         }
   
     }

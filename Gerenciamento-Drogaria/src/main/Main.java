@@ -3,6 +3,7 @@ package main;
 
 import controle.CadastroPessoa;
 import controle.CadastroMedicamento;
+import controle.CadastroProduto;
 import java.util.Scanner;
 
 public class Main {
@@ -55,6 +56,8 @@ public class Main {
         System.out.println("2 - CADASTRAR CLIENTE");
         System.out.println("3 - CADASTRAR MEDICAMENTO CONTROLADO");
         System.out.println("4 - CADASTRAR MEDICAMENTO INJETAVEL");
+        System.out.println("5 - CADASTRAR MEDICAMENTO");
+        System.out.println("6 - CADASTRAR PRODUTO");
         escolha = input.nextInt();
     
         switch (escolha){
@@ -69,6 +72,12 @@ public class Main {
                  break;
             case 4:
                  CadastroMedicamento.cadastroMedicamentoInjetavel();
+                 break;
+            case 5:
+                 CadastroMedicamento.cadastroMedicamento();
+                 break;
+            case 6:
+                 CadastroProduto.cadastrarProduto();
                  break;
             default:
                 System.out.println("\nOPCAO INVALIDA!");
@@ -97,16 +106,16 @@ public class Main {
                 CadastroPessoa.listarPessoas(2);
                 break;
             case 3:
-                CadastroMedicamento.listarProdutos(1);
+                CadastroProduto.listarProdutos(1);
                 break;
             case 4:
-                CadastroMedicamento.listarProdutos(2);
+                CadastroProduto.listarProdutos(2);
                 break;
             case 5:
-                CadastroMedicamento.listarProdutos(3);
+                CadastroProduto.listarProdutos(3);
                 break;
             case 6:
-                CadastroMedicamento.listarProdutos(4);
+                CadastroProduto.listarProdutos(4);
                 break;
             default:
                 System.out.println("\nOPCAO INVALIDA!");
