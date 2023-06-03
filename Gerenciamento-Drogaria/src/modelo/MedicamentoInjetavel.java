@@ -23,6 +23,11 @@ public class MedicamentoInjetavel extends Medicamento{
     public void setCpfPaciente(String cpfPaciente) {
         this.cpfPaciente = cpfPaciente;
     }
+
+    @Override
+    public String toString() {
+        return "MedicamentoInjetavel{"+super.toString() + "funcionarioResponsavel=" + funcionarioResponsavel + ", cpfPaciente=" + cpfPaciente + '}';
+    }
     
     
 }

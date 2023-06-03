@@ -13,7 +13,7 @@ public class CadastroPessoa {
     public static ArrayList<Funcionario> funcionarios = new ArrayList<>();
     public static ArrayList<Cliente> clientes = new ArrayList<>();
     
-    public static Pessoa setarDados(Pessoa nova_pessoa){
+    public static void setarDados(Pessoa nova_pessoa){
         Random aleatorio = new Random();
         nova_pessoa.setCodigo(aleatorio.nextInt(100));
         
@@ -24,7 +24,6 @@ public class CadastroPessoa {
         System.out.println("DATA DE NASCIMENTO:");
         nova_pessoa.setDataNascimento(Input.nextLocalDate());
         
-        return nova_pessoa;
     }
     
     public static void cadastroFuncionario(){
@@ -49,19 +48,32 @@ public class CadastroPessoa {
         System.out.println("\nCADASTRO DE NOVO CLIENTE REALIZADO!!");
     }
     
+    public static void pesquisarCodFuncionario(int cod){
+        
+    }
+    
     public static void listarPessoas(int escolha){
         switch (escolha) {
             case 1 -> {
+                if (funcionarios.isEmpty()){
+                    System.out.println("\nNENHUM REGISTRADO ENCONTRADO!");
+                    return;
+                } 
+
                 for (Funcionario listaFuncionarios : funcionarios) {
                     System.out.println(listaFuncionarios);
                 }
             }
             case 2 -> {
+                if(clientes.isEmpty()){
+                    System.out.println("\nNENHUM REGISTRADO ENCONTRADO!");
+                    return;
+                }
+
                 for (Cliente listaClientes : clientes) {
                     System.out.println(listaClientes);
                 }
             }
-            default -> System.out.println("OPÇÃO INVALIDA!!");
         }
   
     }

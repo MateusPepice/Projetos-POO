@@ -23,6 +23,11 @@ public class MedicamentoControlado extends Medicamento{
     public void setCpfPaciente(String cpfPaciente) {
         this.cpfPaciente = cpfPaciente;
     }
+
+    @Override
+    public String toString() {
+        return "MedicamentoControlado{" +super.toString()+ "crmMedico=" + crmMedico + ", cpfPaciente=" + cpfPaciente + '}';
+    }
     
     
 }
