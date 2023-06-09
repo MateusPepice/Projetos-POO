@@ -1,7 +1,6 @@
 
 package controle;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Random;
 import modelo.Cliente;
@@ -50,15 +49,12 @@ public class CadastroPessoa {
     public static Pessoa pesquisarCod(int cod){
         
         if(pessoas.isEmpty()){
-            System.out.println("\nNAO HA REGISTRADO CADASTRADOS!");
+            System.out.println("\nNAO HA REGISTROS CADASTRADOS!");
             return null;
         }
 
         for (Pessoa pessoa : pessoas) {
-            if(pessoa.equals(cod)){
-                return pessoa;
-            }
-            if(pessoa.equals(cod)){
+            if(pessoa.getCodigo() == cod){
                 return pessoa;
             }
         }
@@ -68,9 +64,9 @@ public class CadastroPessoa {
     
     public static void listarPessoas(int escolha){
         boolean encontrado = true;
-        
+            
         for (Pessoa lista : pessoas) {
-            if(lista instanceof Funcionario && escolha == 1){
+            if((lista instanceof Funcionario) && (escolha == 1)){
                 System.out.println(lista);
                 encontrado = false;
             } else if((lista instanceof Cliente) && (escolha == 2)){

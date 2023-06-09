@@ -16,7 +16,7 @@ public class CadastroProduto {
         novo_produto.setCodigo(Input.nextInt());
         System.out.println("DESCRICAO.........:");
         novo_produto.setDescricao(Input.nextLine());
-        System.out.println("MARCA.............:");
+       /* System.out.println("MARCA.............:");
         novo_produto.setMarca(Input.nextLine());
         System.out.println("LOTE..............:");
         novo_produto.setLote(Input.nextLine());
@@ -25,7 +25,7 @@ public class CadastroProduto {
         System.out.println("DATA DE VENCIMENTO:");
         novo_produto.setDataVencimento(Input.nextLocalDate());
         System.out.println("CODIGO DE BARRAS..:");
-        novo_produto.setCodigoBarras(Input.nextLine());
+        novo_produto.setCodigoBarras(Input.nextLine());*/
         System.out.println("VALOR (R$)........:");
         novo_produto.setValor(Input.nextDouble());
     }
@@ -62,31 +62,12 @@ public class CadastroProduto {
     }
     
     public static Produto pesquisarCod(int cod){
-    
         for (Produto produto : produtos) {
-            if(produto.equals(cod)){
+            if(produto.getCodigo() == cod){
                 return produto;
             }
         }
         System.out.println("\nREGISTRO NAO ENCONTRADO!");
         return null;
-    }
-    
-    public static ArrayList<ItemVenda> carrinho(ArrayList<ItemVenda> itens){
-        int codigo = 0;
-        int indice = 0;
-        
-        do{  
-            System.out.println("0 - SAIR DO CARRINHO");
-            System.out.println("CODIGO DO PRODUTO:");
-            codigo = Input.nextInt();
-            Produto item = pesquisarCod(codigo);
-            itens.get(indice).setProduto(item);
-            System.out.println("QUANTIDADE:");
-            
-            indice++;
-        }while (codigo != 0);
-                
-        return itens;
     }
 }

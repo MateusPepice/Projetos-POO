@@ -37,6 +37,5 @@ public class Medicamento extends Produto{
     public String toString() {
         return super.toString() + "numRegistroAnvisa=" + numRegistroAnvisa + ", composicao=" + composicao + ", dosagem=" + dosagem;
     }
-    
-    
+
 }

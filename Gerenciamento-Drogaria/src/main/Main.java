@@ -4,6 +4,7 @@ package main;
 import controle.CadastroPessoa;
 import controle.CadastroMedicamento;
 import controle.CadastroProduto;
+import controle.RealizarVenda;
 import java.util.Scanner;
 
 public class Main {
@@ -12,7 +13,6 @@ public class Main {
     
     public static void main(String[] args) {
         menu();
-   
     }
     
    public static void menu(){
@@ -95,6 +95,8 @@ public class Main {
         System.out.println("4 - LISTAR PRODUTOS (MEDICAMENTOS INJETAVEIS)");
         System.out.println("5 - LISTAR MEDICAMENTOS");
         System.out.println("6 - LISTAR PRODUTOS");
+        System.out.println("7 - LISTAR VENDAS");
+        System.out.println("8 - LISTAR DETALHES DA VENDA");
 
         escolha = input.nextInt();
         
@@ -117,6 +119,12 @@ public class Main {
             case 6:
                 CadastroProduto.listarProdutos(4);
                 break;
+            case 7:
+                RealizarVenda.listarVendas();
+                break;
+            case 8:
+                RealizarVenda.exibirDetalhes();
+                break;
             default:
                 System.out.println("\nOPCAO INVALIDA!");
                 break;
@@ -124,6 +132,6 @@ public class Main {
     }
     
     public static void realizarVenda(){
-        
+        RealizarVenda.novaVenda();
     }
 }
