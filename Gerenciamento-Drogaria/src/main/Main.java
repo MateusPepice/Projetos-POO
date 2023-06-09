@@ -6,6 +6,7 @@ import controle.CadastroMedicamento;
 import controle.CadastroProduto;
 import controle.RealizarVenda;
 import java.util.Scanner;
+import util.Input;
 
 public class Main {
     private static final Scanner input = new Scanner(System.in);

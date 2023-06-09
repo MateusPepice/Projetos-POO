@@ -11,12 +11,12 @@ public class CadastroMedicamento {
     
     public static void setarDados(Medicamento novo_produto){
         CadastroProduto.setarDados(novo_produto);
-      /*  System.out.println("REGISTRO ANVISA...:");
+        System.out.println("REGISTRO ANVISA...:");
         novo_produto.setNumRegistroAnvisa(Input.nextInt());
         System.out.println("COMPOSICAO QUIMICA:");
         novo_produto.setComposicao(Input.nextLine());
         System.out.println("DOSAGEM...........:");
-        novo_produto.setDosagem(Input.nextDouble());*/
+        novo_produto.setDosagem(Input.nextDouble());
     }
 
     public static void cadastroMedicamento(){

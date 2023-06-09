@@ -1,6 +1,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Venda {
@@ -80,6 +81,12 @@ public class Venda {
         }
         if(getDesconto() == 0) return;
 
+        LocalDate dataAtual = LocalDate.now();
+        long idade = getCliente().getDataNascimento().until(dataAtual, ChronoUnit.YEARS);
+        
+        if(idade > 60 && getValorProduto() > 100){
+            this.valorTotal = this.valorTotal - 10;
+        }
         this.valorTotal = this.valorTotal - (this.valorTotal * getDesconto());
     }
 
@@ -113,7 +120,7 @@ public class Venda {
     public void desconto(MedicamentoControlado medicamentoControlado){
         setDesconto(0.03);
     }
-    
+
     public void desconto(MedicamentoInjetavel medicamentoInjetavel){
         setDesconto(0);
     }

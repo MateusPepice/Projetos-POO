@@ -20,7 +20,7 @@ public class RealizarVenda {
         Random aleatorio = new Random();
         nova_venda.setCodigo(aleatorio.nextInt(100));
         
-       /* System.out.println("CODIGO DO FUNCIONARIO:");
+        System.out.println("CODIGO DO FUNCIONARIO:");
         Funcionario funcionario = (Funcionario) CadastroPessoa.pesquisarCod(Input.nextInt());
         if(funcionario == null) return false;
         nova_venda.setFuncionario(funcionario);
@@ -31,13 +31,23 @@ public class RealizarVenda {
         nova_venda.setCliente(cliente);
         
         System.out.println("DATA:");
-        nova_venda.setData(Input.nextLocalDate());*/
+        nova_venda.setData(Input.nextLocalDate());
         
         ArrayList<ItemVenda> itens = new ArrayList<>();
         carrinho(itens);
         nova_venda.setListaProdutos(itens);
         
         nova_venda.setValorProduto();
+        
+        if(itens.get(0).getProduto() instanceof MedicamentoControlado){
+            nova_venda.desconto((MedicamentoControlado)(itens.get(0).getProduto()));
+        } else if (itens.get(0).getProduto() instanceof MedicamentoInjetavel) {
+            nova_venda.desconto((MedicamentoInjetavel)(itens.get(0).getProduto()));
+        } else if (itens.get(0).getProduto() instanceof Medicamento) {
+            nova_venda.desconto((Medicamento)(itens.get(0).getProduto()));
+        } else if (itens.get(0).getProduto() instanceof Produto) {
+            nova_venda.desconto((Produto)(itens.get(0).getProduto()));
+        }
         
         nova_venda.setValorTotal();
         
@@ -65,6 +75,7 @@ public class RealizarVenda {
             codigo = Input.nextInt();
             if(codigo == 0) return;
             
+
             Produto item = CadastroProduto.pesquisarCod(codigo);
             if(item != null){
                 ItemVenda novoItem = new ItemVenda();
