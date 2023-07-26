@@ -32,4 +32,12 @@ public class CadastroPessoa {
         pessoas.add(novaPessoa);
         System.out.println("PESSOA CADASTRADA COM SUCESSO!");
     }
+    
+    public static void PesquisarPessoa(){
+        for (Pessoa pessoa : pessoas) {
+            if(opcao == 1){
+                if(pessoa.)
+            }
+        }
+    }
 }
