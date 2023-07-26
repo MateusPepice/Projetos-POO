@@ -14,6 +14,7 @@ public class CadastroPessoa {
         System.out.println("CPF:");
         novaPessoa.setCpf(Input.nextLine());
         System.out.println("DATA DE NASCIMENTO:");
+        novaPessoa.setData(Input.nextLocalDate());
         SetarEndereco(novaPessoa);
     }
     
@@ -33,11 +34,51 @@ public class CadastroPessoa {
         System.out.println("PESSOA CADASTRADA COM SUCESSO!");
     }
     
-    public static void PesquisarPessoa(){
+    public static void PesquisarPessoaCpf(String dado){
+        int contador = 0;
+        System.out.println("\nRESULTADOS ENCONTRADOS:");
         for (Pessoa pessoa : pessoas) {
-            if(opcao == 1){
-                if(pessoa.)
+            if(pessoa.getCpf().contains(dado)){
+                System.out.println(pessoa);
+                contador++;
             }
         }
+        System.out.printf("TOTAL: " + contador);
+    }
+    public static void PesquisarPessoaNome(String dado){
+        int contador = 0;
+        System.out.println("RESULTADOS ENCONTRADOS:");
+        for (Pessoa pessoa : pessoas) {
+            if(pessoa.getNome().contains(dado)){
+                System.out.println(pessoa);
+                contador++;
+            }
+        }
+        System.out.printf("TOTAL: " + contador);
+    }
+    
+    public static void Listar(int ordem){
+        
+    }
+    
+    public static Pessoa buscaPessoa(String cpf){
+        for (Pessoa pessoa : pessoas) {
+            if(pessoa.getCpf().equals(cpf)){
+                return pessoa;
+            }
+        }
+        return null;
+    }
+    
+    public static void RemoverPessoaCpf(String cpf){
+        int indice = 0;
+        Pessoa p = buscaPessoa(cpf);
+        if(p == null){
+            System.out.println("PESSOA NAO ENCONTRADA!");
+            return;
+        }
+        
+        pessoas.remove(p);
+        System.out.println("PESSOA REMOVIDA!");
     }
 }
