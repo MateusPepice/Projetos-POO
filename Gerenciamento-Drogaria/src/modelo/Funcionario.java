@@ -17,7 +17,7 @@ public class Funcionario extends Pessoa{
 
     @Override
     public String toString() {
-        return "Funcionario{"+super.toString() + "ctps=" + ctps + '}';
+        return "Funcionario{"+super.toString() + "CTPS: " + ctps + "}";
     }
     
     

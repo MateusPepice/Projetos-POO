@@ -1,17 +1,18 @@
 package controle;
 
 import java.util.ArrayList;
+import modelo.ItemVenda;
 import modelo.Medicamento;
 import modelo.MedicamentoControlado;
 import modelo.MedicamentoInjetavel;
+import modelo.Produto;
+import modelo.Venda;
 import util.Input;
 
 public class CadastroProduto {
-    public static ArrayList<MedicamentoControlado> medicamentosControlados = new ArrayList<>();
-    public static ArrayList<MedicamentoInjetavel> medicamentosInjetaveis = new ArrayList<>();
+    public static ArrayList<Produto> produtos = new ArrayList<>();
     
-    public static Medicamento setarDados(Medicamento novo_produto){
-        
+    public static void setarDados(Produto novo_produto){
         System.out.println("CODIGO............:");
         novo_produto.setCodigo(Input.nextInt());
         System.out.println("DESCRICAO.........:");
@@ -28,37 +29,46 @@ public class CadastroProduto {
         novo_produto.setCodigoBarras(Input.nextLine());
         System.out.println("VALOR (R$)........:");
         novo_produto.setValor(Input.nextDouble());
-
-        return novo_produto;
-    }
-
-    public static void cadastroMedicamentoInjetavel(){
-       MedicamentoInjetavel novo_medicamento = new MedicamentoInjetavel();
-       setarDados(novo_medicamento);
-       medicamentosInjetaveis.add(novo_medicamento);
-       System.out.println("\nCADASTRO DE MEDICAMENTO INJETAVEL REALIZADO!");
     }
     
-    public static void cadastroMedicamentoControlado(){
-       MedicamentoControlado novo_medicamento = new MedicamentoControlado(); 
-        setarDados(novo_medicamento);
-        medicamentosControlados.add(novo_medicamento);
-        System.out.println("\nCADASTRO DE MEDICAMENTO CONTROLADO REALIZADO!");
+    public static void cadastrarProduto(){
+        Produto novo_produto = new Produto();
+        setarDados(novo_produto);
+        produtos.add(novo_produto);
+        System.out.println("\nCADASTRO DE PRODUTO REALIZADO!");
     }
     
     public static void listarProdutos(int tipo){
-        switch(tipo){
-            case 1 -> {
-                for (MedicamentoControlado listaMedicamentosControlado : medicamentosControlados) {
-                    System.out.println(listaMedicamentosControlado);
-                }
+        
+        boolean encontrado = true;
+        for (Produto lista : produtos) {
+            if(lista instanceof MedicamentoControlado && tipo == 1){
+                System.out.println(lista);
+                encontrado = false;
+            } else if((lista instanceof MedicamentoInjetavel) && (tipo == 2)){
+                System.out.println(lista);
+                encontrado = false;
+            } else if (lista instanceof Medicamento && tipo == 3){
+                System.out.println(lista);
+                encontrado = false;
+            } else if (lista instanceof Produto && tipo == 4){
+                System.out.println(lista);
+                encontrado = false;
             }
-            case 2 -> {
-                for (MedicamentoInjetavel listarMedicamentosInjetaveis : medicamentosInjetaveis) {
-                    System.out.println(listarMedicamentosInjetaveis);
-                }
-            }
-            default -> System.out.println("\nOPCAO INVALIDA!");
         }
+        
+        if(encontrado){
+            System.out.println("\nNENHUM REGISTRO ENCONTRADO!");
+        }
+    }
+    
+    public static Produto pesquisarCod(int cod){
+        for (Produto produto : produtos) {
+            if(produto.getCodigo() == cod){
+                return produto;
+            } 
+        }
+        System.out.println("\nREGISTRO NAO ENCONTRADO!");
+        return null;
     }
 }

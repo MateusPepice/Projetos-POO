@@ -1,7 +1,6 @@
 
 package controle;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Random;
 import modelo.Cliente;
@@ -10,10 +9,9 @@ import modelo.Pessoa;
 import util.Input;
 
 public class CadastroPessoa {
-    public static ArrayList<Funcionario> funcionarios = new ArrayList<>();
-    public static ArrayList<Cliente> clientes = new ArrayList<>();
+    public static ArrayList<Pessoa> pessoas = new ArrayList<>();
     
-    public static Pessoa setarDados(Pessoa nova_pessoa){
+    public static void setarDados(Pessoa nova_pessoa){
         Random aleatorio = new Random();
         nova_pessoa.setCodigo(aleatorio.nextInt(100));
         
@@ -24,7 +22,6 @@ public class CadastroPessoa {
         System.out.println("DATA DE NASCIMENTO:");
         nova_pessoa.setDataNascimento(Input.nextLocalDate());
         
-        return nova_pessoa;
     }
     
     public static void cadastroFuncionario(){
@@ -34,7 +31,7 @@ public class CadastroPessoa {
         System.out.println("CTPS....:");
         novo_funcionario.setCtps(Input.nextLine());
         
-        funcionarios.add(novo_funcionario);
+        pessoas.add(novo_funcionario);
         System.out.println("\nCADASTRO DE NOVO FUNCIONARIO REALIZADO!!");
     }
     
@@ -45,23 +42,41 @@ public class CadastroPessoa {
         System.out.println("EMAIL...:");
         novo_cliente.setEmail(Input.nextLine());
         
-        clientes.add(novo_cliente);
+        pessoas.add(novo_cliente);
         System.out.println("\nCADASTRO DE NOVO CLIENTE REALIZADO!!");
     }
     
+    public static Pessoa pesquisarCod(int cod){
+        
+        if(pessoas.isEmpty()){
+            System.out.println("\nNAO HA REGISTROS CADASTRADOS!");
+            return null;
+        }
+
+        for (Pessoa pessoa : pessoas) {
+            if(pessoa.getCodigo() == cod){
+                return pessoa;
+            }
+        }
+        System.out.println("\nREGISTRO NAO ENCONTRADO!");
+        return null;
+    }
+    
     public static void listarPessoas(int escolha){
-        switch (escolha) {
-            case 1 -> {
-                for (Funcionario listaFuncionarios : funcionarios) {
-                    System.out.println(listaFuncionarios);
-                }
+        boolean encontrado = true;
+            
+        for (Pessoa lista : pessoas) {
+            if((lista instanceof Funcionario) && (escolha == 1)){
+                System.out.println(lista);
+                encontrado = false;
+            } else if((lista instanceof Cliente) && (escolha == 2)){
+                System.out.println(lista);
+                encontrado = false;
             }
-            case 2 -> {
-                for (Cliente listaClientes : clientes) {
-                    System.out.println(listaClientes);
-                }
-            }
-            default -> System.out.println("OPÇÃO INVALIDA!!");
+        }
+        
+        if(encontrado){
+            System.out.println("\nNENHUM REGISTRO CADASTRADO!");
         }
   
     }

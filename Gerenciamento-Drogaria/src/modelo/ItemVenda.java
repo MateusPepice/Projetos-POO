@@ -24,23 +24,32 @@ public class ItemVenda {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+        setValorUnitario();
+        setValorTotal();
     }
 
     public double getValorUnitario() {
         return valorUnitario;
     }
 
-    public void setValorUnitario(double valorUnitario) {
-        this.valorUnitario = valorUnitario;
+    public void setValorUnitario() {
+        this.valorUnitario = getProduto().getValor();
     }
 
     public double getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(double valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setValorTotal() {    
+        this.valorTotal = (getQuantidade() * getValorUnitario());
     }
-    
+
+    @Override
+    public String toString() {
+        return "DESCRICAO: " + produto.getDescricao() + 
+                ", QUANTIDADE: " + quantidade + 
+                ", VLR. UNITARIO: R$ " + valorUnitario + 
+                ", VLR. TOTAL: R$ " + valorTotal + '}';
+    }
     
 }

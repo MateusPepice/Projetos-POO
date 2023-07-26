@@ -32,6 +32,10 @@ public class Medicamento extends Produto{
     public void setDosagem(double dosagem) {
         this.dosagem = dosagem;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return super.toString() + "numRegistroAnvisa=" + numRegistroAnvisa + ", composicao=" + composicao + ", dosagem=" + dosagem;
+    }
+
 }

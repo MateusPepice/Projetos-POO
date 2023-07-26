@@ -1,6 +1,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Venda {
@@ -9,10 +10,11 @@ public class Venda {
     private Funcionario funcionario;
     private Cliente cliente;
     private LocalDate data;
+    private ArrayList<ItemVenda> listaProdutos = new ArrayList<>();
     private double valorProduto;
     private double desconto;
     private double valorTotal;
-    private ArrayList<ItemVenda> listaProdutos = new ArrayList<>();
+
 
     public Venda() {
         this.funcionario = new Funcionario();
@@ -55,8 +57,10 @@ public class Venda {
         return valorProduto;
     }
 
-    public void setValorProduto(double valorProduto) {
-        this.valorProduto = valorProduto;
+    public void setValorProduto() {
+        for (ItemVenda listaProduto : listaProdutos) {
+            this.valorProduto = listaProduto.getValorTotal() + this.valorTotal;
+        }
     }
 
     public double getDesconto() {
@@ -71,8 +75,19 @@ public class Venda {
         return valorTotal;
     }
 
-    public void setValorTotal(double valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setValorTotal() {
+        for (ItemVenda listaProduto : listaProdutos) {
+            this.valorTotal = listaProduto.getValorTotal() + this.valorTotal;
+        }
+        if(getDesconto() == 0) return;
+
+        LocalDate dataAtual = LocalDate.now();
+        long idade = getCliente().getDataNascimento().until(dataAtual, ChronoUnit.YEARS);
+        
+        if(idade > 60 && getValorProduto() > 100){
+            this.valorTotal = this.valorTotal - 10;
+        }
+        this.valorTotal = this.valorTotal - (this.valorTotal * getDesconto());
     }
 
     public ArrayList<ItemVenda> getListaProdutos() {
@@ -83,4 +98,31 @@ public class Venda {
         this.listaProdutos = listaProdutos;
     }
 
+    @Override
+    public String toString() {
+        return "Venda{" + "CODIGO: " + codigo + 
+                ", CLIENTE: " + cliente.getNome() + 
+                ", DATA: " + data + 
+                ", QTDE. PRODUTOS: " + listaProdutos.size() + 
+                ", VALOR DOS PRODUTOS: " + valorProduto + 
+                ", DESCONTO: " + desconto + 
+                ", VALOR REAL DA COMPRA: " + valorTotal + '}';
+    }
+
+    public void desconto(Produto produto){
+        setDesconto(0.05);
+    }
+    
+    public void desconto(Medicamento medicamento){
+        setDesconto(0.1);
+    }
+    
+    public void desconto(MedicamentoControlado medicamentoControlado){
+        setDesconto(0.03);
+    }
+
+    public void desconto(MedicamentoInjetavel medicamentoInjetavel){
+        setDesconto(0);
+    }
+    
 }

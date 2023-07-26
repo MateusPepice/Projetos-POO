@@ -45,7 +45,7 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" + "codigo=" + codigo + ", nome=" + nome + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + '}';
+        return "CODIGO: " + codigo + ", NOME: " + nome + ", CPF: " + cpf + ", DATA DE NASCIMENTO: " + dataNascimento + ", ";
     }
     
     

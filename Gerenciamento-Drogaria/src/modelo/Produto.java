@@ -78,6 +78,10 @@ public class Produto {
     public void setValor(double valor) {
         this.valor = valor;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Produto{" + "codigo=" + codigo + ", descricao=" + descricao + ", marca=" + marca + ", lote=" + lote + ", dataFabricacao=" + dataFabricacao + ", dataVencimento=" + dataVencimento + ", codigoBarras=" + codigoBarras + ", valor=" + valor + '}';
+    }
     
 }
