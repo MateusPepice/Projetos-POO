@@ -1,5 +1,7 @@
 package aulapoo;
 import controle.CadastroPessoa;
+import java.util.ArrayList;
+import java.util.Collections;
 import util.Input;
 
 public class Main {

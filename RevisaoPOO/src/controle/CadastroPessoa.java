@@ -2,10 +2,11 @@
 package controle;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import modelo.Pessoa;
 import util.Input;
 
-public class CadastroPessoa {
+public class CadastroPessoa{
     public static ArrayList<Pessoa> pessoas = new ArrayList<>();
     
     public static void SetarPessoa(Pessoa novaPessoa){
@@ -58,7 +59,19 @@ public class CadastroPessoa {
     }
     
     public static void Listar(int ordem){
-        
+        if (ordem == 1){
+            Collections.sort(pessoas);
+            for (Pessoa pessoa : pessoas) {
+                pessoa.exibirInformacoes();
+            }
+        } else {
+            Collections.sort(pessoas);
+            Collections.reverse(pessoas);
+            for (Pessoa pessoa : pessoas) {
+                pessoa.exibirInformacoes();
+            }
+            
+        }
     }
     
     public static Pessoa buscaPessoa(String cpf){
@@ -81,4 +94,5 @@ public class CadastroPessoa {
         pessoas.remove(p);
         System.out.println("PESSOA REMOVIDA!");
     }
+    
 }
