@@ -1,7 +1,5 @@
 package aulapoo;
 import controle.CadastroPessoa;
-import java.util.ArrayList;
-import java.util.Collections;
 import util.Input;
 
 public class Main {
@@ -10,10 +8,36 @@ public class Main {
     public static void main(String[] args) {
         menu();
     }
+    
     public static void menu(){
+        do{
+            System.out.println("\n-----MENU PRINCIPAL-----\n");
+            System.out.println("1 - MENU CADASTRO PESSOA");
+            System.out.println("2 - MENU CADASTRO ALUNO");
+            System.out.println("0 - SAIR DO SISTEMA");
+            resposta = Input.nextInt();
+            
+            switch(resposta){
+                case 1 -> moduloAluno();
+                case 2 -> moduloCadastro();
+                default -> System.out.println("OPCAO INVALIDA!");
+            }
+        } while (resposta != 0);
+        System.out.println("VOCE SAIU DO SISTEMA!");
+    }
+    
+    public static void moduloAluno(){
+        do{
+            System.out.println("\n-----MENU CADASTRO DE ALUNO-----");
+            System.out.println("1 - CADASTRAR ALUNO");
+            
+        }while (resposta != 0);
+    }
+    
+    public static void moduloPessoa(){
         
         do{
-            System.out.println("\n-----MENU PRINCIPAL-----");
+            System.out.println("\n-----MENU CADASTRO DE PESSOA-----");
             System.out.println("1 - CADASTRAR PESSOA");
             System.out.println("2 - PESQUISAR PESSOA");
             System.out.println("3 - LISTAR PESSOAS");
@@ -26,7 +50,7 @@ public class Main {
                 case 2 -> moduloPesquisa();
                 case 3 -> moduloLista();
                 case 4 -> moduloRemover();
-                default -> moduloPessoa();
+                default -> System.out.println("OPCAO INVALIDA!");
             }
  
         } while (resposta != 0);
@@ -34,7 +58,7 @@ public class Main {
         System.out.println("VOCE SAIU DO SISTEMA!");
     }
     
-    public static void moduloPessoa(){
+    public static void moduloCadastro(){
         CadastroPessoa.CadastrarPessoa();
     }
     
