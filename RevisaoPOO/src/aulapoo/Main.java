@@ -43,7 +43,7 @@ public class Main {
                 case 2 -> pesquisarAluno();
                 case 3 -> listarAlunos();
                 case 4 -> removerAluno();
-                case 0 -> {}
+                case 0 -> menu();
                 default -> System.out.println("OPCAO INVALIDA!");
             }
         }while (resposta != 0);
@@ -55,19 +55,22 @@ public class Main {
     public static void pesquisarAluno(){
         String dado;
         System.out.println("BUSCAR POR:"
-            + " 1 - CPF"
+            + " 1 - RA"
             + " 2 - NOME");
         resposta = Input.nextInt();
         
         if(resposta == 1){
             System.out.println("INFORME O RA DA PESSOA:");
             dado = Input.nextLine();
-            CadastroAluno.PesquisarAlunoCpf(dado);
-        } else{
+            CadastroAluno.PesquisarAlunoRa(dado);
+        } else if (resposta == 2){
             System.out.println("INFORME O NOME DA PESSOA:");
             dado = Input.nextLine();
             CadastroAluno.PesquisarAlunoNome(dado);
-        } 
+        } else {
+            System.out.println("OPCAO INVALIDA!");
+            pesquisarAluno();
+        }
     }
     public static void listarAlunos(){
         System.out.println("1 - ORDEM CRESCENTE");
@@ -89,7 +92,7 @@ public class Main {
             System.out.println("2 - PESQUISAR PESSOA");
             System.out.println("3 - LISTAR PESSOAS");
             System.out.println("4 - REMOVER PESSOAS");
-            System.out.println("0 - SAIR DO SISTEMA");
+            System.out.println("0 - VOLTAR");
             resposta = Input.nextInt();
       
             switch(resposta) {
@@ -97,13 +100,12 @@ public class Main {
                 case 2 -> pesquisarPessoa();
                 case 3 -> listarPessoas();
                 case 4 -> removerPessoa();
-                case 0 -> {}
+                case 0 -> menu();
                 default -> System.out.println("OPCAO INVALIDA!");
             }
  
         } while (resposta != 0);
-        
-        System.out.println("VOCE SAIU DO SISTEMA!");
+       
     }
     
     public static void cadastrarPessoa(){
@@ -121,11 +123,14 @@ public class Main {
             System.out.println("INFORME O CPF DA PESSOA:");
             dado = Input.nextLine();
             CadastroPessoa.PesquisarPessoaCpf(dado);
-        } else{
+        } else if (resposta == 2){
             System.out.println("INFORME O NOME DA PESSOA:");
             dado = Input.nextLine();
             CadastroPessoa.PesquisarPessoaNome(dado);
-        } 
+        } else{
+            System.out.println("OPCAO INVALIDA!");
+            pesquisarPessoa();
+        }
     }
     
     public static void listarPessoas(){

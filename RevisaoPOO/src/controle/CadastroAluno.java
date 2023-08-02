@@ -20,7 +20,19 @@ public class CadastroAluno {
         System.out.println("DATA DA MATRICULA:");
         novoAluno.setDataMatricula(Input.nextLocalDate());
         System.out.println("SITUACAO:");
-        novoAluno.setSituacao(Input.nextLine());
+        System.out.println("1 - EM ANDAMENTO");
+        System.out.println("2 - CONCLUIDO");
+        System.out.println("3 - TRANCADA");
+        System.out.println("4 - DESISTENTE");
+        int situacao = Input.nextInt();
+            switch(situacao){
+                case 1 -> novoAluno.setSituacao("EM ANDAMENTO");
+                case 2 -> novoAluno.setSituacao("CONCLUIDO");
+                case 3 -> novoAluno.setSituacao("TRANCADA");
+                case 4 -> novoAluno.setSituacao("DESISTENTE");
+                default -> System.out.println("OPCAO INVALIDA!");
+            }
+
     }
     
     public static void cadastrarAluno(){
@@ -30,11 +42,11 @@ public class CadastroAluno {
         System.out.println("PESSOA CADASTRADA COM SUCESSO!");
     }
     
-    public static void PesquisarAlunoCpf(String dado){
+    public static void PesquisarAlunoRa(String dado){
         int contador = 0;
         System.out.println("\nRESULTADOS ENCONTRADOS:");
         for (Aluno aluno : alunos) {
-            if(aluno.getCpf().contains(dado)){
+            if(aluno.getRA().contains(dado)){
                 System.out.println(aluno);
                 contador++;
             }
@@ -56,14 +68,14 @@ public class CadastroAluno {
     public static void listarAluno(int ordem){
         if (ordem == 1){
             Collections.sort(alunos);
-            for (Pessoa pessoa : alunos) {
-                pessoa.exibirInformacoes();
+            for (Aluno aluno : alunos) {
+                aluno.exibirInformacoes();
             }
         } else {
-            Collections.sort(pessoas);
-            Collections.reverse(pessoas);
-            for (Pessoa pessoa : pessoas) {
-                pessoa.exibirInformacoes();
+            Collections.sort(alunos);
+            Collections.reverse(alunos);
+            for (Aluno aluno : alunos) {
+                aluno.exibirInformacoes();
             }
             
         }
