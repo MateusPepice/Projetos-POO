@@ -1,13 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controle;
 
-/**
- *
- * @author MPEPICE
- */
+import java.util.ArrayList;
+import modelo.Aluno;
+
 public class CadastroAluno {
+    public static ArrayList<Aluno> alunos = new ArrayList<>();
     
+    public static void setarDados(Aluno aluno){
+        System.out.println("RA:");
+        System.out.println("SITUACAO:");
+        System.out.println("DATA DE MATRICULA:");
+    }
 }
