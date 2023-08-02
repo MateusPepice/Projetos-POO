@@ -25,9 +25,8 @@ public class Funcionario extends Pessoa{
     }
 
     @Override
-    public String toString() {
-        return "Funcionario{" + "ctps=" + ctps + ", salario=" + salario + '}';
+    public String exibirInformacoes(){
+        return super.exibirInformacoes() + "CTPS: " + ctps + "SALARIO: R$" + salario + "\n";
     }
-    
     
 }

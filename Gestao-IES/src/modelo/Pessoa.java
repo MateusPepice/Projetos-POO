@@ -43,12 +43,11 @@ public class Pessoa {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-
-    @Override
-    public String toString() {
-        return "Pessoa{" + "nome=" + nome + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + ", endereco=" + endereco + '}';
-    }
-    
-    
    
+    public String exibirInformacoes(){
+        return "NOME: " + nome + "CPF: " + cpf + "DATA DE NASCIMENTO: " + dataNascimento 
+                + "ENDERECO: "+ endereco +"\n";
+    }
+
+    
 }

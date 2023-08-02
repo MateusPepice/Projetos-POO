@@ -45,9 +45,10 @@ public class Aluno extends Pessoa{
         this.curso = curso;
     }
 
-    @Override
-    public String toString() {
-        return "Aluno{" + "ra=" + ra + ", situacao=" + situacao + ", dataMatricula=" + dataMatricula + ", curso=" + curso + '}';
-    }
+   @Override
+   public String exibirInformacoes(){
+       return super.exibirInformacoes() + "RA: " + ra + "SITUACAO: " + situacao 
+               + "DATA DE MATRICULA: " + dataMatricula + "CURSO: " + curso.getNome() +"\n";
+   }
     
 }

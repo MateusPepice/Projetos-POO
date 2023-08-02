@@ -8,9 +8,7 @@ public class Professor extends Funcionario{
     }
 
     @Override
-    public String toString() {
-        return "Professor{" + "formacao=" + formacao + '}';
+    public String exibirInformacoes(){
+        return super.exibirInformacoes() + "FORMACAO: " + formacao + "\n"; 
     }
-    
-    
 }
