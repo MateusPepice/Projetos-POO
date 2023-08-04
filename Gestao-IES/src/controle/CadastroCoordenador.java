@@ -10,4 +10,13 @@ public class CadastroCoordenador {
     public static void setarDados(Coordenador coordenador){
         CadastroProfessor.setarDados(coordenador);
     }
+    
+    public static void cadastrar(){
+        Coordenador coordenador = new Coordenador();
+        setarDados(coordenador);
+        coordenadores.add(coordenador);
+        System.out.println("COORDENADOR CADASTRADO!");
+    }
+    
+    
 }

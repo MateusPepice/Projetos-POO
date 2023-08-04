@@ -12,7 +12,7 @@ public class Aluno extends Pessoa{
     public Aluno() {
         this.curso = new Curso();
     }
-
+    
     public String getRa() {
         return ra;
     }

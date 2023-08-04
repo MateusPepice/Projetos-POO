@@ -1,6 +1,7 @@
 
 package main;
 
+import controle.CadastroAluno;
 import util.Input;
 
 public class Main {
@@ -48,12 +49,14 @@ public class Main {
            
            switch (resposta){
                case 1:
+                   CadastroAluno.cadastrar();
                    break;
                case 2:
                    break;
                case 3:
                    break;
                case 4:
+                   CadastroAluno.deletar();
                    break;
                case 5:
                    menu();

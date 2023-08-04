@@ -9,9 +9,14 @@ public class CadastroFuncionario {
     
     public static void setarDados(Funcionario funcionario){
        CadastroPessoa.setarDados(funcionario);
-       
         System.out.println("CTPS:");
         System.out.println("SALARIO:");
     }
         
+    public static void cadastrar(){
+        Funcionario funcionario = new Funcionario();
+        setarDados(funcionario);
+        funcionarios.add(funcionario);
+        System.out.println("FUNCIONARIO CADASTRADO!");
+    }
 }
