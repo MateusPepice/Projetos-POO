@@ -17,6 +17,5 @@ public class CadastroCoordenador {
         coordenadores.add(coordenador);
         System.out.println("COORDENADOR CADASTRADO!");
     }
-    
-    
+
 }

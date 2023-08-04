@@ -35,8 +35,9 @@ public class CadastroAluno {
         String cpf;
         cpf = Input.nextLine();
         alunos.stream().filter(i -> i.getCpf().equals(cpf));
-                
+        System.out.println(alunos.stream().filter(i -> i.getCpf().equals(cpf)).findFirst().get().exibirInformacoes());
+       
         alunos.remove(aluno);
-        System.out.println("ALUNO REMOVIDO!");
     }
+    
 }
