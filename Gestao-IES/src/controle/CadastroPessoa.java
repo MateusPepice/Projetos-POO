@@ -15,6 +15,16 @@ public class CadastroPessoa {
         pessoa.setCpf(Input.nextLine());
         System.out.println("DATA DE NASCIMENTO:");
         pessoa.setDataNascimento(Input.nextLocalDate());
+        setarDadosEndereco(pessoa);
+    }
+    
+    public static void setarDadosEndereco(Pessoa pessoa){
+        System.out.println("CIDADE:");
+        pessoa.getEndereco().setCidade(Input.nextLine());
+        System.out.println("RUA:");
+        pessoa.getEndereco().setRua(Input.nextLine());
+        System.out.println("NUMERO:");
+        pessoa.getEndereco().setNumero(Input.nextLine());
     }
     
     public static Pessoa pesquisar(ArrayList<Pessoa> busca){
@@ -27,6 +37,5 @@ public class CadastroPessoa {
         }
         return null;
     }
-    
-    
+
 }

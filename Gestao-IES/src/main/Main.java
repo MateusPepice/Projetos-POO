@@ -52,8 +52,10 @@ public class Main {
                    CadastroAluno.cadastrar();
                    break;
                case 2:
+                   CadastroAluno.exibir();
                    break;
                case 3:
+                   CadastroAluno.alterar();
                    break;
                case 4:
                    CadastroAluno.deletar();
