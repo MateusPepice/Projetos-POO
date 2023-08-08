@@ -2,8 +2,10 @@
 package controle;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.stream.Collectors;
 import modelo.Aluno;
+import modelo.Curso;
 import modelo.Pessoa;
 import util.Input;
 
@@ -114,5 +116,26 @@ public class CadastroAluno {
         }
         
         System.out.println("INFORMACAO ALTERADA!");
+    }
+    
+    public static void listarCadastros(){
+        if(vazio()) return;
+        
+        System.out.println("1 - ORDEM CRESCENTE");
+        System.out.println("2 - ORDEM DECRESCENTE");
+        int resposta = Input.nextInt();
+        
+        if(resposta == 1){
+            Collections.sort(alunos);
+            for (Aluno aluno : alunos) {
+                System.out.println(aluno.exibirInformacoes());
+            }
+        }else{
+            Collections.sort(alunos);
+            Collections.reverse(alunos);
+            for (Aluno aluno : alunos) {
+                System.out.println(aluno.exibirInformacoes());
+            }
+        }
     }
 }

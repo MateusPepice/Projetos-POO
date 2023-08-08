@@ -2,6 +2,7 @@
 package controle;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.stream.Collectors;
 import modelo.Pessoa;
 import modelo.Professor;
@@ -20,9 +21,8 @@ public class CadastroProfessor {
     public static void setarDados(Professor professor){
         CadastroPessoa.setarDados(professor);
         
-        /*System.out.println("RA:");
-        System.out.println("SITUACAO:");
-        System.out.println("DATA DE MATRICULA:");  */
+        System.out.println("FORMACAO:");
+        professor.setFormacao(Input.nextLine());
     }
     
     public static void cadastrar(){
@@ -107,5 +107,26 @@ public class CadastroProfessor {
         }
         
         System.out.println("INFORMACAO ALTERADA!");
+    }
+    
+    public static void listarCadastros(){
+        if(vazio()) return;
+        
+        System.out.println("1 - ORDEM CRESCENTE");
+        System.out.println("2 - ORDEM DECRESCENTE");
+        int resposta = Input.nextInt();
+        
+        if(resposta == 1){
+            Collections.sort(professores);
+            for (Professor professor : professores) {
+                System.out.println(professor.exibirInformacoes());
+            }
+        }else{
+            Collections.sort(professores);
+            Collections.reverse(professores);
+            for (Professor professor : professores) {
+                System.out.println(professor.exibirInformacoes());
+            }
+        }
     }
 }

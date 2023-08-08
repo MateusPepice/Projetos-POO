@@ -2,6 +2,10 @@
 package main;
 
 import controle.CadastroAluno;
+import controle.CadastroCoordenador;
+import controle.CadastroCurso;
+import controle.CadastroFuncionario;
+import controle.CadastroProfessor;
 import util.Input;
 
 public class Main {
@@ -48,24 +52,12 @@ public class Main {
            resposta = Input.nextInt();
            
            switch (resposta){
-               case 1:
-                   CadastroAluno.cadastrar();
-                   break;
-               case 2:
-                   CadastroAluno.exibir();
-                   break;
-               case 3:
-                   CadastroAluno.alterar();
-                   break;
-               case 4:
-                   CadastroAluno.deletar();
-                   break;
-               case 5:
-                   menu();
-                   break;
-               case 0:
-                   System.out.println("VOCE SAIU DO SISTEMA!");
-                   break;
+               case 1 -> CadastroAluno.cadastrar();
+               case 2 -> CadastroAluno.exibir();
+               case 3 -> CadastroAluno.alterar();
+               case 4 -> CadastroAluno.deletar();
+               case 5 -> menu();
+               case 0 -> System.out.println("VOCE SAIU DO SISTEMA!");
            }
        } while (resposta != 0);
     }
@@ -81,20 +73,12 @@ public class Main {
            resposta = Input.nextInt();
            
            switch (resposta){
-               case 1:
-                   break;
-               case 2:
-                   break;
-               case 3:
-                   break;
-               case 4:
-                   break;
-               case 5:
-                   menu();
-                   break;
-               case 0:
-                   System.out.println("VOCE SAIU DO SISTEMA!");
-                   break;
+               case 1 -> CadastroFuncionario.cadastrar();
+               case 2 -> CadastroFuncionario.exibir();
+               case 3 -> CadastroFuncionario.alterar();
+               case 4 -> CadastroFuncionario.deletar();
+               case 5 -> menu();
+               case 0 -> System.out.println("VOCE SAIU DO SISTEMA!");
            }
        } while (resposta != 0);
     }
@@ -110,20 +94,12 @@ public class Main {
            resposta = Input.nextInt();
            
            switch (resposta){
-               case 1:
-                   break;
-               case 2:
-                   break;
-               case 3:
-                   break;
-               case 4:
-                   break;
-               case 5:
-                   menu();
-                   break;
-               case 0:
-                   System.out.println("VOCE SAIU DO SISTEMA!");
-                   break;
+               case 1 -> CadastroProfessor.cadastrar();
+               case 2 -> CadastroProfessor.exibir();
+               case 3 -> CadastroProfessor.alterar();
+               case 4 -> CadastroProfessor.deletar();
+               case 5 -> menu();
+               case 0 -> System.out.println("VOCE SAIU DO SISTEMA!");
            }
        } while (resposta != 0);
     }
@@ -139,20 +115,12 @@ public class Main {
            resposta = Input.nextInt();
            
            switch (resposta){
-               case 1:
-                   break;
-               case 2:
-                   break;
-               case 3:
-                   break;
-               case 4:
-                   break;
-               case 5:
-                   menu();
-                   break;
-               case 0:
-                   System.out.println("VOCE SAIU DO SISTEMA!");
-                   break;
+               case 1 -> CadastroCoordenador.cadastrar();
+               case 2 -> CadastroCoordenador.exibir();
+               case 3 -> CadastroCoordenador.alterar();
+               case 4 -> CadastroCoordenador.deletar();
+               case 5 -> menu();
+               case 0 -> System.out.println("VOCE SAIU DO SISTEMA!");
            }
        } while (resposta != 0);
     }
@@ -168,42 +136,38 @@ public class Main {
            resposta = Input.nextInt();
            
            switch (resposta){
-               case 1:
-                   break;
-               case 2:
-                   break;
-               case 3:
-                   break;
-               case 4:
-                   break;
-               case 5:
-                   menu();
-                   break;
-               case 0:
-                   System.out.println("VOCE SAIU DO SISTEMA!");
-                   break;
+               case 1 -> CadastroCurso.cadastrar();
+               case 2 -> CadastroCurso.exibir();
+               case 3 -> CadastroCurso.alterar();
+               case 4 -> CadastroCurso.deletar();
+               case 5 -> menu();
+               case 0 -> System.out.println("VOCE SAIU DO SISTEMA!");
            }
        } while (resposta != 0);
     }
     public static void moduloRelatorios(){
        do {
            System.out.println("=====RELATÓRIOS GERENCIAIS=====");
-           System.out.println("1 - CADASTRAR");
-           System.out.println("2 - EXIBIR");
-           System.out.println("3 - ALTERAR");
-           System.out.println("4 - DELETAR");
+           System.out.println("1 - ALUNOS");
+           System.out.println("2 - FUNCIONARIOS");
+           System.out.println("3 - PROFESSORES");
+           System.out.println("4 - COORDENADORES");
            System.out.println("5 - VOLTAR");
            System.out.println("0 - SAIR DO SISTEMA");
            resposta = Input.nextInt();
            
            switch (resposta){
                case 1:
+                   CadastroAluno.listarCadastros();
                    break;
                case 2:
+                   CadastroFuncionario.listarCadastros();
                    break;
                case 3:
+                   CadastroProfessor.listarCadastros();
                    break;
                case 4:
+                   CadastroCoordenador.listarCadastros();
                    break;
                case 5:
                    menu();

@@ -1,7 +1,7 @@
 
 package modelo;
 
-public class Endereco {
+public class Endereco{
     protected String cidade;
     protected String rua;
     protected String numero;
@@ -35,7 +35,7 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "Endereco{" + "cidade=" + cidade + ", rua=" + rua + ", numero=" + numero + '}';
+        return " CIDADE: " + cidade + " RUA: " + rua + " NUMERO: " + numero;
     }
     
     

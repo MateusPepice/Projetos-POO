@@ -2,6 +2,7 @@
 package controle;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.stream.Collectors;
 import modelo.Coordenador;
 import modelo.Pessoa;
@@ -19,10 +20,6 @@ public class CadastroCoordenador {
     }
     public static void setarDados(Coordenador coordenador){
         CadastroPessoa.setarDados(coordenador);
-        
-        /*System.out.println("RA:");
-        System.out.println("SITUACAO:");
-        System.out.println("DATA DE MATRICULA:");  */
     }
     
     public static void cadastrar(){
@@ -106,5 +103,26 @@ public class CadastroCoordenador {
         }
         
         System.out.println("INFORMACAO ALTERADA!");
+    }
+    
+    public static void listarCadastros(){
+        if(vazio()) return;
+        
+        System.out.println("1 - ORDEM CRESCENTE");
+        System.out.println("2 - ORDEM DECRESCENTE");
+        int resposta = Input.nextInt();
+        
+        if(resposta == 1){
+            Collections.sort(coordenadores);
+            for (Coordenador coordenador : coordenadores) {
+                System.out.println(coordenador.exibirInformacoes());
+            }
+        }else{
+            Collections.sort(coordenadores);
+            Collections.reverse(coordenadores);
+            for (Coordenador coordenador : coordenadores) {
+                System.out.println(coordenador.exibirInformacoes());
+            }
+        }
     }
 }

@@ -3,7 +3,7 @@ package modelo;
 
 import java.time.LocalDate;
 
-public class Aluno extends Pessoa{
+public class Aluno extends Pessoa implements Comparable<Aluno>{
     protected String ra;
     protected String situacao;
     protected LocalDate dataMatricula;
@@ -47,8 +47,12 @@ public class Aluno extends Pessoa{
 
    @Override
    public String exibirInformacoes(){
-       return super.exibirInformacoes() + "RA: " + ra + "SITUACAO: " + situacao 
-               + "DATA DE MATRICULA: " + dataMatricula + "CURSO: " + curso.getNome() +"\n";
+       return super.exibirInformacoes() + " RA: " + ra + " SITUACAO: " + situacao 
+               + " DATA DE MATRICULA: " + dataMatricula + " CURSO: " + curso.getNome() +"\n";
    }
     
+    @Override
+    public int compareTo(Aluno a) {
+        return this.nome.compareToIgnoreCase(a.getNome());
+    }
 }

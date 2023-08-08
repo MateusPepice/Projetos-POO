@@ -2,6 +2,7 @@
 package controle;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.stream.Collectors;
 import modelo.Funcionario;
 import modelo.Pessoa;
@@ -20,9 +21,10 @@ public class CadastroFuncionario {
     public static void setarDados(Funcionario funcionario){
         CadastroPessoa.setarDados(funcionario);
         
-       /* System.out.println("RA:");
-        System.out.println("SITUACAO:");
-        System.out.println("DATA DE MATRICULA:");  */
+        System.out.println("CTPS:");
+        funcionario.setCtps(Input.nextLine());
+        System.out.println("SALARIO:");
+        funcionario.setSalario(Input.nextDouble());
     }
     
     public static void cadastrar(){
@@ -109,5 +111,26 @@ public class CadastroFuncionario {
         }
         
         System.out.println("INFORMACAO ALTERADA!");
+    }
+    
+    public static void listarCadastros(){
+        if(vazio()) return;
+        
+        System.out.println("1 - ORDEM CRESCENTE");
+        System.out.println("2 - ORDEM DECRESCENTE");
+        int resposta = Input.nextInt();
+        
+        if(resposta == 1){
+            Collections.sort(funcionarios);
+            for (Funcionario funcionario : funcionarios) {
+                System.out.println(funcionario.exibirInformacoes());
+            }
+        }else{
+            Collections.sort(funcionarios);
+            Collections.reverse(funcionarios);
+            for (Funcionario funcionario : funcionarios) {
+                System.out.println(funcionario.exibirInformacoes());
+            }
+        }
     }
 }

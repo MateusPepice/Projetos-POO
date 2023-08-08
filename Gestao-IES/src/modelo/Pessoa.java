@@ -53,8 +53,8 @@ public class Pessoa {
     }
    
     public String exibirInformacoes(){
-        return "NOME: " + nome + "CPF: " + cpf + "DATA DE NASCIMENTO: " + dataNascimento 
-                + "ENDERECO: "+ endereco +"\n";
+        return "NOME: " + nome + " CPF: " + cpf + " DATA DE NASCIMENTO: " + dataNascimento 
+                + " ENDERECO: "+ endereco +"\n";
     }
 
     
