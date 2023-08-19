@@ -1,7 +1,7 @@
 
 package modelo;
 
-public class MatriculaDisciplina {
+public class MatriculaDisciplina implements IExibirInformacao{
    private int ano; 
    private int semestres; 
    private int percentualFrequencia; 
@@ -71,6 +71,16 @@ public class MatriculaDisciplina {
 
     public void setProfessor(Professor professor) {
         this.professor = professor;
+    }
+
+    @Override
+    public String getInformaoes() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void exibirInformacoes() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
    
    

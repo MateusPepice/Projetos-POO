@@ -15,11 +15,6 @@ public class Professor extends Funcionario{
         this.formacao = formacao;
     }
     
-    @Override
-    public String exibirInformacoes(){
-        return super.exibirInformacoes() + " FORMACAO: " + formacao + "\n"; 
-    }
-    
     public int compareTo(Professor p) {
         return this.nome.compareToIgnoreCase(p.getNome());
     }

@@ -1,7 +1,7 @@
 
 package modelo;
 
-public class Endereco{
+public class Endereco implements IExibirInformacao{
     private String cidade;
     private String rua;
     private String numero;
@@ -36,6 +36,16 @@ public class Endereco{
     @Override
     public String toString() {
         return " CIDADE: " + cidade + " RUA: " + rua + " NUMERO: " + numero;
+    }
+
+    @Override
+    public String getInformaoes() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void exibirInformacoes() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     

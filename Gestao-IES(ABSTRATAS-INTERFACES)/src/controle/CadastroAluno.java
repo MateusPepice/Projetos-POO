@@ -1,6 +1,7 @@
 
-/*package controle;
+package controle;
 
+import static controle.CadastroPessoa.cadastros;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.stream.Collectors;
@@ -25,9 +26,9 @@ public class CadastroAluno {
         System.out.println("RA:");
         aluno.setRa(Input.nextLine());
         System.out.println("SITUACAO:");
-        aluno.setSituacao(Input.nextLine());
+      //  aluno.setSituacao(Input.nextLine());
         System.out.println("DATA DE MATRICULA:");  
-        aluno.setDataMatricula(Input.nextLocalDate());
+        //aluno.setDataMatricula(Input.nextLocalDate());
     }
     
     public static void cadastrar(){
@@ -60,7 +61,7 @@ public class CadastroAluno {
             System.out.println("ALUNO NAO ENCONTRADO!");
             return;
         }
-        System.out.println(aluno.exibirInformacoes());
+        //System.out.println(aluno.exibirInformacoes());
     }
     
     public static void alterar(){
@@ -90,8 +91,8 @@ public class CadastroAluno {
             case 3 -> aluno.setDataNascimento(Input.nextLocalDate());
             case 4 -> alterarEndereco(aluno);
             case 5 -> aluno.setRa(Input.nextLine());
-            case 6 -> aluno.setSituacao(Input.nextLine());
-            case 7 -> aluno.setDataMatricula(Input.nextLocalDate());
+           // case 6 -> aluno.setSituacao(Input.nextLine());
+            //case 7 -> aluno.setDataMatricula(Input.nextLocalDate());
         }
 
         System.out.println("INFORMACAO ALTERADA!");
@@ -128,14 +129,14 @@ public class CadastroAluno {
         if(resposta == 1){
             Collections.sort(alunos);
             for (Aluno aluno : alunos) {
-                System.out.println(aluno.exibirInformacoes());
+           //     System.out.println(aluno.exibirInformacoes());
             }
         }else{
             Collections.sort(alunos);
             Collections.reverse(alunos);
             for (Aluno aluno : alunos) {
-                System.out.println(aluno.exibirInformacoes());
+            //    System.out.println(aluno.exibirInformacoes());
             }
         }
     }
-}*/
+}

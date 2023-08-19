@@ -2,7 +2,7 @@ package modelo;
 
 import java.time.LocalDate;
 
-public abstract class Pessoa {
+public abstract class Pessoa implements IExibirInformacao{
    protected String nome; 
    protected String cpf; 
    protected LocalDate dataNascimento; 
@@ -53,10 +53,15 @@ public abstract class Pessoa {
         this.email = email;
     }
 
-    public String exibirInformacoes(){
-        return "NOME: " + nome + " CPF: " + cpf + " DATA DE NASCIMENTO: " + dataNascimento 
-                + " ENDERECO: "+ endereco +"\n";
+    @Override
+    public String getInformaoes() {
+        return "";
     }
 
+    @Override
+    public void exibirInformacoes() {
+        
+    }
+    
     
 }

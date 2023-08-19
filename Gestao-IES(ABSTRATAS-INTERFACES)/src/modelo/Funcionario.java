@@ -34,11 +34,6 @@ public class Funcionario extends Pessoa implements Comparable<Funcionario>{
     }
 
     @Override
-    public String exibirInformacoes(){
-        return super.exibirInformacoes() + " CTPS: " + ctps + " SALARIO: R$" + salario + "\n";
-    }
-    
-    @Override
     public int compareTo(Funcionario f) {
         return this.nome.compareToIgnoreCase(f.getNome());
     }

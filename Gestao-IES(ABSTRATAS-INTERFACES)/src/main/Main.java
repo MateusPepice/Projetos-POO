@@ -1,4 +1,3 @@
-
 /*package main;
 
 import controle.CadastroCurso;
@@ -8,7 +7,9 @@ public class Main {
     static int resposta;
     
     public static void main(String[] args) {
-        menu();
+        
+    }
+        //menu();
     }
     
     public static void menu(){

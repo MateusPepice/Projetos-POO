@@ -18,10 +18,6 @@ public class Aluno extends Pessoa implements Comparable<Aluno>{
         this.ra = ra;
     }
     
-   @Override
-   public String exibirInformacoes(){
-       return super.exibirInformacoes() + " RA: " + ra + "\n";
-   }
     
     @Override
     public int compareTo(Aluno a) {
