@@ -157,24 +157,12 @@ public class Main {
            resposta = Input.nextInt();
            
            switch (resposta){
-               case 1:
-                   CadastroAluno.listarCadastros();
-                   break;
-               case 2:
-                   CadastroFuncionario.listarCadastros();
-                   break;
-               case 3:
-                   CadastroProfessor.listarCadastros();
-                   break;
-               case 4:
-                   CadastroCoordenador.listarCadastros();
-                   break;
-               case 5:
-                   menu();
-                   break;
-               case 0:
-                   System.out.println("VOCE SAIU DO SISTEMA!");
-                   break;
+               case 1 -> CadastroAluno.listarCadastros();
+               case 2 -> CadastroFuncionario.listarCadastros();
+               case 3 -> CadastroProfessor.listarCadastros();
+               case 4 -> CadastroCoordenador.listarCadastros();
+               case 5 -> menu();
+               case 0 -> System.out.println("VOCE SAIU DO SISTEMA!");
            }
        } while (resposta != 0);
     }
