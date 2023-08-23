@@ -2,6 +2,6 @@
 package modelo;
 
 public interface IExibirInformacao {
-    public String getInformaoes();
+    public String getInformacoes();
     public void exibirInformacoes();
 }

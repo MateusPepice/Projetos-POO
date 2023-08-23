@@ -25,7 +25,7 @@ public class MenuCadastros {
         System.out.println("0 - VOLTAR");
     }
     
-    public static int selecaoMenu(String entidade){
+    public static int selecaoMenu(){
         menuPrincipal();
         System.out.println("OPCAO:");
         return Input.nextInt();

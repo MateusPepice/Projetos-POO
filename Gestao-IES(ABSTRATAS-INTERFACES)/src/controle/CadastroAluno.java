@@ -42,7 +42,7 @@ public class CadastroAluno {
         if(vazio()) return;
         
         ArrayList<Pessoa> pessoas = (ArrayList<Pessoa>) alunos.stream().map(e -> (Pessoa) e).collect(Collectors.toList());
-        Aluno aluno = (Aluno) CadastroPessoa.pesquisar(pessoas);
+
         if(aluno == null){
             System.out.println("ALUNO NAO ENCONTRADO!");
             return;

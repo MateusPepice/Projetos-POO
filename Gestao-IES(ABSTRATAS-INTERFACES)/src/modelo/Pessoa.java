@@ -54,13 +54,13 @@ public abstract class Pessoa implements IExibirInformacao{
     }
 
     @Override
-    public String getInformaoes() {
-        return "";
+    public String getInformacoes() {
+       return "";
     }
-
+    
     @Override
     public void exibirInformacoes() {
-        
+       getInformacoes();
     }
     
     

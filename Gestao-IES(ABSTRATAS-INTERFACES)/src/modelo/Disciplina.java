@@ -34,13 +34,13 @@ public class Disciplina implements IExibirInformacao{
     }
 
     @Override
-    public String getInformaoes() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getInformacoes() {
+       return "";
     }
-
+    
     @Override
     public void exibirInformacoes() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       getInformacoes();
     }
    
    

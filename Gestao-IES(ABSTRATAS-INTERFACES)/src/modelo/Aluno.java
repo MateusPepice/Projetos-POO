@@ -23,4 +23,14 @@ public class Aluno extends Pessoa implements Comparable<Aluno>{
     public int compareTo(Aluno a) {
         return this.nome.compareToIgnoreCase(a.getNome());
     }
+
+    @Override
+    public String getInformacoes() {
+       return "";
+    }
+    
+    @Override
+    public void exibirInformacoes() {
+       getInformacoes();
+    }
 }

@@ -9,7 +9,13 @@ public class CadastroPessoa {
     public static ArrayList<Pessoa> cadastros = new ArrayList<>();
     static String dado; 
     
-    
+    /*public static void menuControlePessoa(String entidade){
+        int resposta;
+        resposta = MenuCadastros.selecaoCadastros(entidade);
+        switch(resposta){
+            case 1 -> 
+        }
+    }*/
     
     public static void setarDados(Pessoa pessoa){
         System.out.println("NOME:");
@@ -30,15 +36,15 @@ public class CadastroPessoa {
         pessoa.getEndereco().setNumero(Input.nextLine());
     }
     
-    public static Pessoa pesquisar(ArrayList<Pessoa> busca){
-        System.out.println("INFORME O CPF:");
-        dado = Input.nextLine();
-        for (Pessoa pessoa : busca) {
-            if(pessoa.getCpf().equals(dado)){
-                return pessoa;
+    public static Pessoa pesquisar(){
+        String cpf;
+        cpf = Input.nextLine();
+        for (Pessoa cadastro : cadastros) {
+            if(cadastro.getCpf().equals(dado)){
+                return cadastro;
             }
         }
         return null;
     }
-
+    
 }

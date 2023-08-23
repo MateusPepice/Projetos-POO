@@ -37,4 +37,14 @@ public class Funcionario extends Pessoa implements Comparable<Funcionario>{
     public int compareTo(Funcionario f) {
         return this.nome.compareToIgnoreCase(f.getNome());
     }
+    
+    @Override
+    public String getInformacoes() {
+       return "";
+    }
+    
+    @Override
+    public void exibirInformacoes() {
+       getInformacoes();
+    }
 }
