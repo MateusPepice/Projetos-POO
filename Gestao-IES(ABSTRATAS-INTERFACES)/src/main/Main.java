@@ -1,13 +1,19 @@
 package main;
 
+import controle.CadastroAluno;
 import controle.CadastroCurso;
+import controle.CadastroFuncionario;
 import controle.CadastroPessoa;
+import controle.CadastroProfessor;
 import controle.MenuCadastros;
 import static controle.MenuCadastros.menuPrincipal;
 import util.Input;
 
 public class Main {
-    
+    CadastroAluno cadAluno = new CadastroAluno();
+    CadastroCurso cadCurso = new CadastroCurso();
+    CadastroFuncionario cadFuncionario = new CadastroFuncionario();
+    CadastroProfessor cadProfessor = new CadastroProfessor();
     
     public static void main(String[] args) {
         int resposta;

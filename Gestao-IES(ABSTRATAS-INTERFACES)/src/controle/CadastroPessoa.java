@@ -2,49 +2,97 @@
 package controle;
 
 import java.util.ArrayList;
+import modelo.Aluno;
+import modelo.Curso;
+import modelo.Disciplina;
+import modelo.Funcionario;
+import modelo.ICadastro;
 import modelo.Pessoa;
+import modelo.Professor;
 import util.Input;
 
-public class CadastroPessoa {
-    public static ArrayList<Pessoa> cadastros = new ArrayList<>();
-    static String dado; 
+public abstract class CadastroPessoa implements ICadastro{
+    protected static ArrayList<Pessoa> cadastros = new ArrayList<>();
     
-    /*public static void menuControlePessoa(String entidade){
-        int resposta;
-        resposta = MenuCadastros.selecaoCadastros(entidade);
-        switch(resposta){
-            case 1 -> 
-        }
-    }*/
-    
-    public static void setarDados(Pessoa pessoa){
-        System.out.println("NOME:");
-        pessoa.setNome(Input.nextLine());
-        System.out.println("CPF:");
-        pessoa.setCpf(Input.nextLine());
-        System.out.println("DATA DE NASCIMENTO:");
-        pessoa.setDataNascimento(Input.nextLocalDate());
-        setarDadosEndereco(pessoa);
+    @Override
+    public abstract void cadastrar();
+
+    @Override
+    public void alterar() {
+        Pessoa pessoa = pesquisar();
+        setarDados(pessoa);
+        System.out.println("CADASTRO ALTERADO COM SUCESSO!");
     }
-    
-    public static void setarDadosEndereco(Pessoa pessoa){
-        System.out.println("CIDADE:");
-        pessoa.getEndereco().setCidade(Input.nextLine());
-        System.out.println("RUA:");
-        pessoa.getEndereco().setRua(Input.nextLine());
-        System.out.println("NUMERO:");
-        pessoa.getEndereco().setNumero(Input.nextLine());
-    }
-    
-    public static Pessoa pesquisar(){
-        String cpf;
-        cpf = Input.nextLine();
+
+    @Override
+    public Pessoa pesquisar() {
+        System.out.println("INFORME O CPF:");
+        String cpf = Input.nextLine();
+        
         for (Pessoa cadastro : cadastros) {
-            if(cadastro.getCpf().equals(dado)){
+            if(cadastro.getCpf().equals(cpf)){
                 return cadastro;
             }
         }
         return null;
     }
     
+    @Override
+    public void remover() {
+        Pessoa busca = pesquisar();
+        cadastros.remove(busca);
+        System.out.println("CADASTRO DELETADO!");
+    }
+
+    @Override
+    public void listar() {
+        
+    }
+    
+    public void setarDados(Pessoa novoCadastro){
+        System.out.println("NOME:");
+        novoCadastro.setNome(Input.nextLine());
+        System.out.println("CPF:");
+        novoCadastro.setCpf(Input.nextLine());
+        System.out.println("DATA DE NASCIMENTO:");
+        novoCadastro.setDataNascimento(Input.nextLocalDate());
+        System.out.println("EMAIL:");
+        novoCadastro.setEmail(Input.nextLine());
+        setarDadosEndereco(novoCadastro);
+    }
+    
+    public void setarDadosEndereco(Pessoa novoCadastro){
+        System.out.println("CIDADE:");
+        novoCadastro.getEndereco().setCidade(Input.nextLine());
+        System.out.println("RUA:");
+        novoCadastro.getEndereco().setRua(Input.nextLine());
+        System.out.println("NUMERO:");
+        novoCadastro.getEndereco().setNumero(Input.nextLine());
+    }
+    
+    public ArrayList<Pessoa> getLista(){
+        return cadastros;
+    }
+    
+    public boolean verificaVazio(String entidade){
+        switch(entidade){
+            case "ALUNO" -> {
+                for (Pessoa cadastro : cadastros) {
+                    return cadastro instanceof Aluno;
+                }
+            }
+            case "FUNCIONARIO" -> {
+                for (Pessoa cadastro : cadastros) {
+                    return cadastro instanceof Funcionario;
+                }
+            }
+            case "PROFESSOR" -> {
+                for (Pessoa cadastro : cadastros) {
+                    return cadastro instanceof Professor;
+                }
+            }
+            default -> System.out.println("ESTA ENTIDADE NÃO EXISTE!");
+        }
+        return true;
+    }
 }
