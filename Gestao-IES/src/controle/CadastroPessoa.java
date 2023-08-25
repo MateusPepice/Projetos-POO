@@ -6,6 +6,7 @@ import modelo.Pessoa;
 import util.Input;
 
 public class CadastroPessoa {
+    public static ArrayList<Pessoa> cadastros = new ArrayList<>();
     static String dado; 
     
     public static void setarDados(Pessoa pessoa){

@@ -19,13 +19,19 @@ public abstract class CadastroPessoa implements ICadastro{
 
     @Override
     public void alterar() {
-        Pessoa pessoa = pesquisar();
+        Pessoa pessoa = pesquisa();
+        if(pessoaVazia(pessoa)) return;
         setarDados(pessoa);
         System.out.println("CADASTRO ALTERADO COM SUCESSO!");
     }
 
     @Override
-    public Pessoa pesquisar() {
+    public void pesquisar() {
+        Pessoa pessoa = pesquisa();
+        System.out.println(pessoa.getInformacoes());
+    }
+    
+    public Pessoa pesquisa(){
         System.out.println("INFORME O CPF:");
         String cpf = Input.nextLine();
         
@@ -39,14 +45,15 @@ public abstract class CadastroPessoa implements ICadastro{
     
     @Override
     public void remover() {
-        Pessoa busca = pesquisar();
+        Pessoa busca = pesquisa();
+        if(pessoaVazia(busca)) return;
         cadastros.remove(busca);
         System.out.println("CADASTRO DELETADO!");
     }
 
     @Override
     public void listar() {
-        
+       
     }
     
     public void setarDados(Pessoa novoCadastro){
@@ -72,6 +79,16 @@ public abstract class CadastroPessoa implements ICadastro{
     
     public ArrayList<Pessoa> getLista(){
         return cadastros;
+    }
+    
+    public boolean pessoaVazia(Pessoa pessoa){
+        if(pessoa == null){
+            System.out.println("PESSOA NAO ENCONTRADA!");
+            return true;
+        } else{
+            System.out.println("CADASTRO ENCONTRADO!");
+            return false;
+        }
     }
     
     public boolean verificaVazio(String entidade){
