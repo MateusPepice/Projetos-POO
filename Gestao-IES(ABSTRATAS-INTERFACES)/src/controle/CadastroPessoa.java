@@ -2,6 +2,8 @@
 package controle;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import modelo.Aluno;
 import modelo.Curso;
 import modelo.Disciplina;
@@ -53,7 +55,28 @@ public abstract class CadastroPessoa implements ICadastro{
 
     @Override
     public void listar() {
+       listar(cadastros, "PESSOAS", true);
+    }
+    
+    public void listar(List<Pessoa> cadastros, String entidade, boolean MenuOrdenacao){
+       if(verificaEntidade(entidade)) return;
+       int resposta = 1;
+       if(MenuOrdenacao) resposta = Menus.MenuOrdenacao();
        
+       switch(resposta){
+           case 1 -> ordenarLista(cadastros, true);
+           case 2 -> ordenarLista(cadastros, false);
+           default -> System.out.println("OPCAO INVALIDA!");
+       }
+        
+    }
+    
+    public void ordenarLista(List<Pessoa> cadastros, boolean ordemCrescente){
+        if(ordemCrescente){
+            Collections.sort(cadastros);
+        } else {
+            Collections.sort(cadastros, Collections.reverseOrder());
+        }
     }
     
     public void setarDados(Pessoa novoCadastro){
@@ -86,27 +109,43 @@ public abstract class CadastroPessoa implements ICadastro{
             System.out.println("PESSOA NAO ENCONTRADA!");
             return true;
         } else{
-            System.out.println("CADASTRO ENCONTRADO!");
             return false;
         }
     }
     
-    public boolean verificaVazio(String entidade){
+    public boolean verificaEntidade(String entidade){
         switch(entidade){
             case "ALUNO" -> {
                 for (Pessoa cadastro : cadastros) {
-                    return cadastro instanceof Aluno;
+                    if(cadastro instanceof Aluno){
+                        return true;
+                    }
                 }
+                return false;
             }
             case "FUNCIONARIO" -> {
                 for (Pessoa cadastro : cadastros) {
-                    return cadastro instanceof Funcionario;
+                    if(cadastro instanceof Funcionario){
+                        return true;
+                    }
                 }
+                return false;
+            }
+            case "FUNCIONARIO TERCEIRIZADO" -> {
+                for (Pessoa cadastro : cadastros) {
+                    if(cadastro instanceof Funcionario){
+                        return true;
+                    }
+                }
+                return false;
             }
             case "PROFESSOR" -> {
                 for (Pessoa cadastro : cadastros) {
-                    return cadastro instanceof Professor;
+                    if(cadastro instanceof Professor){
+                        return true;
+                    }
                 }
+                return false;
             }
             default -> System.out.println("ESTA ENTIDADE NÃO EXISTE!");
         }

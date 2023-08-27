@@ -2,7 +2,7 @@ package modelo;
 
 import java.time.LocalDate;
 
-public abstract class Pessoa implements IExibirInformacao{
+public abstract class Pessoa implements IExibirInformacao, Comparable<Pessoa>{
    protected String nome; 
    protected String cpf; 
    protected LocalDate dataNascimento; 
@@ -53,6 +53,11 @@ public abstract class Pessoa implements IExibirInformacao{
         this.email = email;
     }
 
+    @Override
+    public int compareTo(Pessoa o) {
+        return this.nome.compareToIgnoreCase(o.getNome());
+    }
+    
     @Override
     public String getInformacoes() {
        return getInformacoes();

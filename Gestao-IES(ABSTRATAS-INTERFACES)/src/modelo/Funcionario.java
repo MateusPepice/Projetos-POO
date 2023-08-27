@@ -1,7 +1,7 @@
 
 package modelo;
 
-public class Funcionario extends Pessoa implements Comparable<Funcionario>{
+public class Funcionario extends Pessoa{
     protected String ctps;
     protected String cargo;
     protected double salario;
@@ -31,11 +31,6 @@ public class Funcionario extends Pessoa implements Comparable<Funcionario>{
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
-    }
-
-    @Override
-    public int compareTo(Funcionario f) {
-        return this.nome.compareToIgnoreCase(f.getNome());
     }
     
     @Override

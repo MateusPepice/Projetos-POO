@@ -9,5 +9,5 @@ package controle;
  * @author MPEPICE
  */
 public class CadastroFuncionario {
-    
+
 }
