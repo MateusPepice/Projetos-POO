@@ -1,5 +1,6 @@
 package main;
 
+import controle.CadastroPessoa;
 import java.time.LocalDate;
 import java.time.Month;
 import modelo.Endereco;
@@ -12,10 +13,13 @@ public class Main {
     }
     
     public static void teste(){
-       Endereco endereco = new Endereco("Cascavel", "Rua Voluntário da Patria", "3949");
-       Pessoa pessoa = new Pessoa("Mateus Pepice", "083.466.619-75", LocalDate.of(2003, 06, 02), "mateuspepice@hotmail.com", endereco);
-       
-       pessoa.exibirInformacoes();
+       CadastroPessoa cadPessoa = new CadastroPessoa();
+       cadPessoa.cadastrar();
+       cadPessoa.cadastrar();
+       cadPessoa.cadastrar();
+       cadPessoa.cadastros.get(0).getCpf();
+       cadPessoa.cadastros.get(1).getCpf();
+       cadPessoa.cadastros.get(2).getCpf();
     }
     
 }

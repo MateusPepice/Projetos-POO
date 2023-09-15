@@ -1,13 +1,20 @@
 
 package modelo;
 
+import java.util.ArrayList;
+
 
 public class Curso implements IExibirInformacoes{
     private String nome;
     private int cargaHoraria;
-    private int semestre;
+    private int qtdSemestre;
+    private Professor coordenador;
+    private int qtdAlunosCurso;
+    private ArrayList<Disciplina> disciplinas;
 
     public Curso() {
+        coordenador = new Professor();
+        disciplinas = new ArrayList<>();
     }
 
     public String getNome() {
@@ -26,21 +33,60 @@ public class Curso implements IExibirInformacoes{
         this.cargaHoraria = cargaHoraria;
     }
 
-    public int getSemestre() {
-        return semestre;
+    public int getQtdSemestre() {
+        return qtdSemestre;
     }
 
-    public void setSemestre(int semestre) {
-        this.semestre = semestre;
+    public void setQtdSemestre(int qtdSemestre) {
+        this.qtdSemestre = qtdSemestre;
     }
 
-    public int qtdAlunosMatriculados(){
-        return;
+    public Professor getCoordenador() {
+        return coordenador;
+    }
+
+    public void setCoordenador(Professor coordenador) {
+        this.coordenador = coordenador;
+    }
+
+    public int getQtdAlunosCurso() {
+        return qtdAlunosCurso;
+    }
+
+    public void setQtdAlunosCurso(int qtdAlunosCurso) {
+        this.qtdAlunosCurso = qtdAlunosCurso;
     }
     
+    public void incrementarAlunos(){
+        this.qtdAlunosCurso++;
+    }
+    
+    public void decrementarAlunos(){
+        this.qtdAlunosCurso--;
+    }
+
+    public ArrayList<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(ArrayList<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+    
+    public void adicionarDisciplinas(Disciplina novaDisciplina){
+        novaDisciplina.setCurso(this);
+        this.disciplinas.add(novaDisciplina);
+    }
+    
+    public void removerDisciplinas(Disciplina novaDisciplina){
+        novaDisciplina.setCurso(null);
+        this.disciplinas.remove(novaDisciplina);
+    }
+
     @Override
     public String getInformacoes() {
-        return nome + " | Carga Horária: " + cargaHoraria + " horas" + " | Semestre: " + semestre;
+        return "Curso: "+ nome + "Carga Horaria: "+ cargaHoraria + "Semestres: " + qtdSemestre
+                + "Coordenador: " + coordenador+"\nALUNOS MATRICULADOS: " + qtdAlunosCurso ; 
     }
 
     @Override
