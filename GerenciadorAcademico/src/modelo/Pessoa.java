@@ -4,7 +4,7 @@ package modelo;
 import java.time.LocalDate;
 import util.DateUtils;
 
-public abstract class Pessoa implements IExibirInformacoes{
+public abstract class Pessoa implements IExibirInformacoes, IConsulta, Comparable<Object>{
     protected String nome;
     protected String cpf;
     protected LocalDate dataNascimento;

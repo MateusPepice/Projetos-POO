@@ -1,27 +1,27 @@
 
 package controle;
 
-import java.util.ArrayList;
-import java.util.List;
-import modelo.Aluno;
-import modelo.IExibirInformacoes;
 import modelo.Pessoa;
+import util.Input;
 
 public class CadastroPessoa implements ICadastro{
-    public List<Pessoa> cadastros = new ListaCadastros<>();
+    public ListaCadastros<Pessoa> lista = new ListaCadastros<>();
 
-    public CadastroPessoa() {
+    public void setarDados(Pessoa pessoa){
+        System.out.println("NOME:");
+        pessoa.setNome(Input.nextLine());
+        System.out.println("CPF:");
+        pessoa.setCpf(Input.nextLine());
+        System.out.println("DATA DE NASCIMENTO:");
+        pessoa.setDataNascimento(Input.nextLocalDate());
+        System.out.println("E-MAIL:");
+        pessoa.setEmail(Input.nextLine());
+        CadastroEndereco.setarDados(pessoa);
     }
-   
+
     @Override
     public void cadastrar() {
-        int i = 0;
-        i++;
-        String aux;
-        aux = String.valueOf(i);
-        Aluno aluno = new Aluno();
-        aluno.setCpf(aux);
-        cadastros.add(aluno);
+    
     }
 
     @Override
