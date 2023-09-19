@@ -30,6 +30,28 @@ public class CadastroPessoa implements ICadastro{
 
     @Override
     public void pesquisar() {
+        String cpf;
+        System.out.println("INFORME O CPF A SER BUSCADO:");
+        cpf = Input.nextLine();
+        
+        for (Pessoa pessoa : lista) {
+            if(pessoa.getCpf().equals(cpf)){
+                System.out.println("PESSOA ENCONTRADO!");
+                pessoa.exibirInformacoes();
+                return;
+            }
+        }
+        System.out.println("PESSOA NÃO ENCONTRADA!");
+        return;
+    }
+    
+    public Object pesquisar(String cpf){
+        for (Pessoa pessoa : lista) {
+            if(pessoa.getCpf().equals(cpf)){
+                return pessoa;
+            }
+        }
+        return null;
     }
 
     @Override

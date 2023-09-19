@@ -19,23 +19,4 @@ public class CadastroAluno extends CadastroPessoa{
         System.out.println("CADASTRO REALIZADO COM SUCESSO!");
     }
 
-    @Override
-    public void alterar() {
-    }
-
-    @Override
-    public void pesquisar() {
-    }
-
-    @Override
-    public void remover() {
-    }
-
-    @Override
-    public void listar() {
-    }
-    
-    public void setarDados(){
-        
-    }
 }
