@@ -16,7 +16,7 @@ public class CadastroPessoa implements ICadastro{
         pessoa.setDataNascimento(Input.nextLocalDate());
         System.out.println("E-MAIL:");
         pessoa.setEmail(Input.nextLine());
-        CadastroEndereco.setarDados(pessoa);
+        //CadastroEndereco.setarDados(pessoa);
     }
 
     @Override

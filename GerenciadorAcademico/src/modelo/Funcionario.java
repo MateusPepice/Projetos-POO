@@ -54,7 +54,7 @@ public class Funcionario extends Pessoa{
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Pessoa o) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

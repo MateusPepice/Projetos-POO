@@ -2,6 +2,7 @@
 package controle;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import modelo.IConsulta;
 import modelo.IExibirInformacoes;
 import modelo.MinhaLista;
@@ -11,18 +12,27 @@ public class ListaCadastros<E extends IExibirInformacoes & IConsulta & Comparabl
 
     @Override
     public void exibirLista() {
+        for (E elemento : this) {
+            elemento.exibirInformacoes();
+        }
     }
 
     @Override
     public void exibirListaOrdenada() {
+        ordenar();
+        for (E elemento : this) {
+            elemento.exibirInformacoes();
+        }
     }
 
     @Override
     public void ordenar() {
+        Collections.sort(this);
     }
 
     @Override
     public void ordenarDecrescente() {
+       Collections.sort(this, Collections.reverseOrder()); 
     }
 
     @Override

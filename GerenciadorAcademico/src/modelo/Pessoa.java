@@ -4,7 +4,7 @@ package modelo;
 import java.time.LocalDate;
 import util.DateUtils;
 
-public abstract class Pessoa implements IExibirInformacoes, IConsulta, Comparable<Object>{
+public abstract class Pessoa implements Comparable<Pessoa>, IExibirInformacoes, IConsulta{
     protected String nome;
     protected String cpf;
     protected LocalDate dataNascimento;
@@ -67,6 +67,11 @@ public abstract class Pessoa implements IExibirInformacoes, IConsulta, Comparabl
         return DateUtils.quantidadeAnosEntreDatas(dataNascimento, LocalDate.now());
     }
 
+    @Override
+    public int compareTo(Pessoa o) {
+        return this.nome.compareToIgnoreCase(o.getNome());
+    }
+    
     @Override
     public String getInformacoes() {
         return nome + " | Cpf: " + cpf + " | Idade: " + getIdade()+ " anos " + "| Endereço: " + endereco.getInformacoes();
