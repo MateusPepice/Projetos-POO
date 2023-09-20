@@ -1,6 +1,8 @@
 package controle;
 
+import java.util.ArrayList;
 import modelo.Aluno;
+import modelo.Pessoa;
 import util.Input;
 
 public class CadastroAluno extends CadastroPessoa{
@@ -21,14 +23,6 @@ public class CadastroAluno extends CadastroPessoa{
         setarDados(aluno);
         lista.add(aluno);
         System.out.println("CADASTRO REALIZADO COM SUCESSO!");
-        lista.exibirLista();
-        System.out.println("\n");
-        lista.ordenar();
-        lista.exibirLista();
-        System.out.println("\n");
-        lista.ordenarDecrescente();
-        lista.exibirLista();
-        
     }
 
 }

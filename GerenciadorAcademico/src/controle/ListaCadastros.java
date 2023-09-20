@@ -46,20 +46,27 @@ public class ListaCadastros<E extends IExibirInformacoes & IConsulta & Comparabl
     }
 
     @Override
-    public MinhaLista filtrar(Object chaveBusca) {
+    public ListaCadastros filtrar(Object chaveBusca) {
         ListaCadastros<E> subLista = new ListaCadastros<>();
         for (E elemento : this) {
-            if(elemento.equals(chaveBusca)){
+            if(elemento.chavePrincipal().equals(chaveBusca)){
                 subLista.add(elemento);
             }
         }
+        if(subLista.isEmpty()) return null;
         return subLista;
     }
 
     @Override
-    public MinhaLista filtrarPorVariasChaves(Object chaveBusca) {
-        
-        return null;
+    public ListaCadastros filtrarPorVariasChaves(Object chaveBusca) {
+        ListaCadastros<E> subLista = new ListaCadastros<>();
+        for (E elemento : this) {
+            if(elemento.chavePrincipal().equals(chaveBusca) || elemento.chaveSecundaria().equals(chaveBusca)){
+                subLista.add(elemento);
+            }
+        }
+        if(subLista.isEmpty()) return null;
+        return subLista;
     }
 
 }

@@ -66,7 +66,17 @@ public abstract class Pessoa implements Comparable<Pessoa>, IExibirInformacoes, 
     public long getIdade(){
         return DateUtils.quantidadeAnosEntreDatas(dataNascimento, LocalDate.now());
     }
-
+    
+    @Override
+    public Object chavePrincipal(){
+        return getCpf();
+    }
+    
+    @Override
+    public Object chaveSecundaria(){
+        return getNome();
+    }
+    
     @Override
     public int compareTo(Pessoa o) {
         return this.nome.compareToIgnoreCase(o.getNome());
