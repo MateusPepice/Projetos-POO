@@ -50,11 +50,13 @@ public abstract class CadastroPessoa implements ICadastro{
                 + "1 - UM VALOR"
                 + "2 - DOIS VALORES");
         op = Input.nextInt();
-        switch(op){
-            case 1 -> pesquisaUnica();
-            case 2 -> pesquisaMultipla();
-            default -> System.out.println("OPCAO INVALIDA!");
-        }
+        do{
+            switch(op){
+                case 1 -> pesquisaUnica();
+                case 2 -> pesquisaMultipla();
+                default -> System.out.println("OPCAO INVALIDA!");
+            }
+        }while(op != 1 || op != 2);
     }
     
     public void pesquisaUnica(){
