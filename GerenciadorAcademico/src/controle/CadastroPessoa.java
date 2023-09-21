@@ -4,9 +4,26 @@ package controle;
 import modelo.Pessoa;
 import util.Input;
 
-public class CadastroPessoa implements ICadastro{
+public abstract class CadastroPessoa implements ICadastro{
     public ListaCadastros<Pessoa> lista = new ListaCadastros<>();
 
+     public void menuPrincipal(String entidade){
+        Menus menu = new Menus();
+        int escolha;
+        do{
+            escolha = menu.menuModuloEspecifico(entidade);
+            
+            switch (escolha){
+                case 1 -> cadastrar();
+                case 2 -> alterar();
+                case 3 -> pesquisar();
+                case 4 -> remover();
+                case 5 -> listar();
+                default -> System.out.println("OPCAO INVALIDA!");
+            }
+        }while (escolha != 0);
+    }
+    
     public void setarDados(Pessoa pessoa){
         System.out.println("NOME:");
         pessoa.setNome(Input.nextLine());
@@ -16,13 +33,11 @@ public class CadastroPessoa implements ICadastro{
         pessoa.setDataNascimento(Input.nextLocalDate());
         System.out.println("E-MAIL:");
         pessoa.setEmail(Input.nextLine());
-        //CadastroEndereco.setarDados(pessoa);
+        CadastroEndereco.setarDados(pessoa);
     }
 
     @Override
-    public void cadastrar() {
-    
-    }
+    public abstract void cadastrar();
 
     @Override
     public void alterar() {
@@ -30,28 +45,24 @@ public class CadastroPessoa implements ICadastro{
 
     @Override
     public void pesquisar() {
-        String cpf;
-        System.out.println("INFORME O CPF A SER BUSCADO:");
-        cpf = Input.nextLine();
-        
-        for (Pessoa pessoa : lista) {
-            if(pessoa.getCpf().equals(cpf)){
-                System.out.println("PESSOA ENCONTRADO!");
-                pessoa.exibirInformacoes();
-                return;
-            }
+        int op = 0;
+        System.out.println("BUSCAR POR:"
+                + "1 - UM VALOR"
+                + "2 - DOIS VALORES");
+        op = Input.nextInt();
+        switch(op){
+            case 1 -> pesquisaUnica();
+            case 2 -> pesquisaMultipla();
+            default -> System.out.println("OPCAO INVALIDA!");
         }
-        System.out.println("PESSOA NÃO ENCONTRADA!");
-        return;
     }
     
-    public Object pesquisar(String cpf){
-        for (Pessoa pessoa : lista) {
-            if(pessoa.getCpf().equals(cpf)){
-                return pessoa;
-            }
-        }
-        return null;
+    public void pesquisaUnica(){
+        
+    }
+    
+    public void pesquisaMultipla(){
+        
     }
 
     @Override
@@ -60,6 +71,7 @@ public class CadastroPessoa implements ICadastro{
 
     @Override
     public void listar() {
+        
     }
     
 }

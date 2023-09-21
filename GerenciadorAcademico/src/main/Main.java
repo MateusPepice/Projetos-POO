@@ -6,12 +6,16 @@ import controle.CadastroDisciplina;
 import controle.CadastroFuncTerceirizado;
 import controle.CadastroFuncionario;
 import controle.CadastroProfessor;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import util.Input;
 
 
 
 public class Main {
-
+    public static int escolha;
+    
     public static void main(String[] args) {
         CadastroAluno cadAluno = new CadastroAluno();
         CadastroProfessor cadProf = new CadastroProfessor();
@@ -20,7 +24,6 @@ public class Main {
         CadastroCurso cadCurso = new CadastroCurso();
         CadastroDisciplina cadDisciplina = new CadastroDisciplina();
         
-        int escolha;
         do{
             System.out.println("-----MENU MODULOS-----");
             System.out.println("1 - CADASTRO ALUNO");
@@ -32,14 +35,11 @@ public class Main {
             escolha = Input.nextInt();
             
             switch (escolha){
-                case 1 -> cadAluno.cadastrar();
+                case 1 -> cadAluno.menuAluno("ALUNO");
             }
+           
             
         } while (escolha != 0);
-    }
-    
-    public static void teste(){
-        
     }
     
 }

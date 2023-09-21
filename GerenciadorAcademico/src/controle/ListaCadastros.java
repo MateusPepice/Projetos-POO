@@ -37,12 +37,26 @@ public class ListaCadastros<E extends IExibirInformacoes & IConsulta & Comparabl
 
     @Override
     public E pesquisar(Object chaveBusca) {
-        return null;
+        E busca = null;
+        for (E elemento : this) {
+            if(elemento.chavePrincipal().equals(chaveBusca)){
+                busca = elemento;
+            }
+        }
+        if(busca == null) return null;
+        return busca;
     }
 
     @Override
     public E pesquisarPorVariasChaves(Object chaveBusca) {
-        return null;
+        E busca = null;
+        for (E elemento : this) {
+            if(elemento.chavePrincipal().equals(chaveBusca) || elemento.chaveSecundaria().equals(chaveBusca)){
+                busca = elemento;
+            }
+        }
+        if(busca == null) return null;
+        return busca;
     }
 
     @Override

@@ -1,20 +1,21 @@
 package controle;
 
+import java.awt.Menu;
 import java.util.ArrayList;
+import java.util.List;
 import modelo.Aluno;
-import modelo.Pessoa;
 import util.Input;
 
 public class CadastroAluno extends CadastroPessoa{
-    
-    public void menuAluno(){
-         
+
+    public void menuAluno(String modulo){
+        super.menuPrincipal(modulo);
     }
     
     public void setarDados(Aluno aluno){
         super.setarDados(aluno);
-       /* System.out.println("RA:");
-        aluno.setRa(Input.nextLine());*/
+        System.out.println("RA:");
+        aluno.setRa(Input.nextLine());
     }
     
     @Override
