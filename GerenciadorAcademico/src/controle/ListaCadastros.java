@@ -9,9 +9,10 @@ import modelo.MinhaLista;
 
 
 public class ListaCadastros<E extends IExibirInformacoes & IConsulta & Comparable> extends ArrayList<E> implements MinhaLista<E>{
-
+    
     @Override
     public void exibirLista() {
+        ordenarDecrescente();
         for (E elemento : this) {
             elemento.exibirInformacoes();
         }
@@ -63,7 +64,7 @@ public class ListaCadastros<E extends IExibirInformacoes & IConsulta & Comparabl
     public ListaCadastros filtrar(Object chaveBusca) {
         ListaCadastros<E> subLista = new ListaCadastros<>();
         for (E elemento : this) {
-            if(elemento.chavePrincipal().equals(chaveBusca)){
+            if(elemento.chavePrincipal().contains((CharSequence) chaveBusca)){
                 subLista.add(elemento);
             }
         }
@@ -75,7 +76,7 @@ public class ListaCadastros<E extends IExibirInformacoes & IConsulta & Comparabl
     public ListaCadastros filtrarPorVariasChaves(Object chaveBusca) {
         ListaCadastros<E> subLista = new ListaCadastros<>();
         for (E elemento : this) {
-            if(elemento.chavePrincipal().equals(chaveBusca) || elemento.chaveSecundaria().equals(chaveBusca)){
+            if(elemento.chavePrincipal().contains((CharSequence) chaveBusca) || elemento.chaveSecundaria().contains((CharSequence) chaveBusca)){
                 subLista.add(elemento);
             }
         }
@@ -83,4 +84,14 @@ public class ListaCadastros<E extends IExibirInformacoes & IConsulta & Comparabl
         return subLista;
     }
 
+    public ListaCadastros filtrarInstancia(Object chaveBusca){
+        ListaCadastros<E> subLista = new ListaCadastros<>();
+        for (E elemento : this) {
+            if(elemento.getClass().equals(chaveBusca)){
+                subLista.add(elemento);
+            }
+        }
+        if(subLista.isEmpty()) return null;
+        return subLista;
+    }
 }

@@ -1,24 +1,29 @@
 
 package controle;
 
+import java.util.List;
+import main.Main;
 import modelo.Pessoa;
 import util.Input;
 
 public abstract class CadastroPessoa implements ICadastro{
     public ListaCadastros<Pessoa> lista = new ListaCadastros<>();
+    public ListaCadastros<Pessoa> listaAuxiliar = new ListaCadastros<>();
+    public Pessoa pessoa = null;
+    public int escolha = 0;
+    public String cpf = null;
 
      public void menuPrincipal(String entidade){
         Menus menu = new Menus();
-        int escolha;
         do{
             escolha = menu.menuModuloEspecifico(entidade);
-            
             switch (escolha){
                 case 1 -> cadastrar();
                 case 2 -> alterar();
                 case 3 -> pesquisar();
                 case 4 -> remover();
                 case 5 -> listar();
+                case 0 -> Main.principal();
                 default -> System.out.println("OPCAO INVALIDA!");
             }
         }while (escolha != 0);
@@ -40,40 +45,80 @@ public abstract class CadastroPessoa implements ICadastro{
     public abstract void cadastrar();
 
     @Override
-    public void alterar() {
-    }
+    public abstract void alterar();
 
+    public boolean listaVazia(){
+        if(lista.isEmpty()){
+            System.out.println("LISTA VAZIA");
+            return true;
+        }
+        return false;
+    }
+    
     @Override
     public void pesquisar() {
-        int op = 0;
+        if(listaVazia()) return;
         System.out.println("BUSCAR POR:"
-                + "1 - UM VALOR"
-                + "2 - DOIS VALORES");
-        op = Input.nextInt();
-        do{
-            switch(op){
-                case 1 -> pesquisaUnica();
-                case 2 -> pesquisaMultipla();
-                default -> System.out.println("OPCAO INVALIDA!");
-            }
-        }while(op != 1 || op != 2);
+                + " 1 - UMA CHAVE"
+                + " 2 - VARIAS CHAVES");
+        escolha = Input.nextInt();
+        switch(escolha){
+            case 1 -> pesquisaUnica();
+            case 2 -> pesquisaMultipla();
+            default -> System.out.println("OPCAO INVALIDA!");
+        }
     }
     
-    public void pesquisaUnica(){
+    public String perguntaCpf(){
+        System.out.println("INFORME O CPF:");
+        return Input.nextLine();
+    }
+    public String perguntaCpfNome(){
+        System.out.println("INFORME O CPF OU O NOME:");
+        return Input.nextLine();
+    }
+    
+    public Object pesquisaUnica(){
+        cpf = perguntaCpf();
+        pessoa = lista.pesquisar(cpf);
+        if(pessoa == null){
+            System.out.println("CADASTRO NÃO ENCONTRADO!");
+            return null;
+        }
+        pessoa.exibirInformacoes();
+        return pessoa;
         
     }
     
-    public void pesquisaMultipla(){
-        
+    public Object pesquisaMultipla(){
+        cpf = perguntaCpfNome();
+        pessoa = lista.pesquisarPorVariasChaves(cpf);
+        if(pessoa == null){
+            System.out.println("CADASTRO NÃO ENCONTRADO!");
+            return null;
+        }
+        pessoa.exibirInformacoes();
+        return pessoa;
     }
 
     @Override
     public void remover() {
+        if(listaVazia()) return;
+        Pessoa pessoa = (Pessoa) pesquisaMultipla();
+        lista.remove(pessoa);
     }
 
     @Override
-    public void listar() {
-        
+    public abstract void listar();
+
+    public void listar(ListaCadastros<Pessoa> lista, String entidade, boolean crescente) {
+        if(listaVazia()) return;
+        System.out.println("-----LISTA DE "+entidade+"-----");
+        if(crescente){
+            lista.exibirListaOrdenada();
+        }else{
+            lista.exibirLista();
+        }
     }
     
 }

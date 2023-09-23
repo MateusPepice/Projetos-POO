@@ -25,10 +25,5 @@ public class Aluno extends Pessoa{
     public void exibirInformacoes() {
         System.out.println(getInformacoes());
     }
-
-    @Override
-    public Object chaveSecundaria() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
 }

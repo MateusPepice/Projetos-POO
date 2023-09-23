@@ -20,4 +20,13 @@ public class Menus {
         escolha = Input.nextInt();
         return escolha;
     }
+    
+    public boolean menuCrescenteDescrente(){
+        System.out.println("LISTA:"
+                + " 1 - CRESCENTE"
+                + " 2 - DECRESCENTE");
+        escolha = Input.nextInt();
+        return escolha == 1;
+    }
+    
 }

@@ -1,13 +1,13 @@
 package controle;
 
-import java.awt.Menu;
-import java.util.ArrayList;
 import java.util.List;
 import modelo.Aluno;
+import modelo.Pessoa;
 import util.Input;
 
 public class CadastroAluno extends CadastroPessoa{
-
+    Menus menu = new Menus();
+    
     public void menuAluno(String modulo){
         super.menuPrincipal(modulo);
     }
@@ -26,4 +26,26 @@ public class CadastroAluno extends CadastroPessoa{
         System.out.println("CADASTRO REALIZADO COM SUCESSO!");
     }
 
+    @Override
+    public void alterar() {
+        if(listaVazia()) return;
+        Aluno aluno = new Aluno();
+        aluno = (Aluno) super.pesquisaUnica();
+        setarDados(aluno);
+    }
+  
+    @Override
+    public void listar() {
+        if(listaVazia()) return;
+        super.listar(listaDeAlunos(), "ALUNO", menu.menuCrescenteDescrente());
+    }
+
+    public ListaCadastros<Pessoa> listaDeAlunos(){
+        List<Pessoa> alunos = lista.filtrarInstancia(Aluno.class);
+        
+        ListaCadastros<Pessoa> subLista = new ListaCadastros<>();
+        subLista.addAll(alunos);
+        
+        return subLista;
+    }
 }

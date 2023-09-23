@@ -4,7 +4,7 @@ package modelo;
 import java.util.ArrayList;
 
 
-public class Curso implements IExibirInformacoes{
+public class Curso implements IExibirInformacoes, IConsulta, Comparable<Object>{
     private String nome;
     private int cargaHoraria;
     private int qtdSemestre;
@@ -92,6 +92,21 @@ public class Curso implements IExibirInformacoes{
     @Override
     public void exibirInformacoes() {
         System.out.println(getInformacoes());
+    }
+
+    @Override
+    public String chavePrincipal() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String chaveSecundaria() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

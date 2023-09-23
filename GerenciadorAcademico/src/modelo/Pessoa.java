@@ -68,12 +68,12 @@ public abstract class Pessoa implements Comparable<Pessoa>, IExibirInformacoes, 
     }
     
     @Override
-    public Object chavePrincipal(){
+    public String chavePrincipal(){
         return getCpf();
     }
     
     @Override
-    public Object chaveSecundaria(){
+    public String chaveSecundaria(){
         return getNome();
     }
     
