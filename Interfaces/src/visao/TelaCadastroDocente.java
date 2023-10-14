@@ -17,9 +17,9 @@ public class TelaCadastroDocente extends javax.swing.JFrame {
     public TelaCadastroDocente(ControleDocente controleDocente) {
         initComponents();
         this.controleDocente = controleDocente;
-        /*buttonGroup1.add(jRB_Masculino);
+        buttonGroup1.add(jRB_Masculino);
         buttonGroup1.add(jRB_Feminino);
-        buttonGroup1.clearSelection();*/
+        buttonGroup1.clearSelection();
         setLocationRelativeTo(null);
     }
 
@@ -88,6 +88,7 @@ public class TelaCadastroDocente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -138,6 +139,11 @@ public class TelaCadastroDocente extends javax.swing.JFrame {
 
         jRB_Masculino.setText("Masculino");
         jRB_Masculino.setToolTipText("");
+        jRB_Masculino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRB_MasculinoActionPerformed(evt);
+            }
+        });
 
         jS_Dia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
 
@@ -306,11 +312,16 @@ public class TelaCadastroDocente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRB_FemininoActionPerformed
 
+    private void jRB_MasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRB_MasculinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRB_MasculinoActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jB_Cancelar;
     private javax.swing.JButton jB_Salvar;
     private javax.swing.JComboBox<String> jCB_Curso;
