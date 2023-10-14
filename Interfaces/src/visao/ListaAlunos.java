@@ -13,9 +13,7 @@ import modelo.Aluno;
 public class ListaAlunos extends javax.swing.JFrame {
 
     private ControleAluno controleAluno;
-    /**
-     * Creates new form ListaAlunos
-     */
+    
     public ListaAlunos(ControleAluno controleAluno) {
         initComponents();
         setLocationRelativeTo(null);
