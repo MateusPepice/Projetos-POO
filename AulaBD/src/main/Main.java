@@ -7,21 +7,18 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Aluno;
+import util.Input;
 
 public class Main {
-    
+    public static DatabaseConnection.getConnection();
+    Statement st = DatabaseConnection.getConnection().createStatement();
     
     public static void main(String[] args) {  
         List<Aluno> alunos = new ArrayList<>();
         try{
-            DatabaseConnection.getConnection();
-            Statement st = DatabaseConnection.getConnection().createStatement();
-            //st.executeUpdate("delete from aluno where (id_aluno = 1)");
-            /*st.executeUpdate("insert into aluno (id_aluno, nome, cpf)"
-                    + "values (3, 'João', '987654')");*/
-            ResultSet rs = st.executeQuery("select * from aluno");
-            while(rs.next()){
-                int id_aluno = rs.getInt("id_aluno");
+            ResultSet rs = st.executeQuery("select ");
+            while(rsEndereco.next()){
+                /*int id_aluno = rs.getInt("id_aluno");
                 String nome = rs.getString("nome");
                 String cpf = rs.getString("cpf");
                 
@@ -34,10 +31,11 @@ public class Main {
                 
                 System.out.println("\nID_ALUNO: "+id_aluno);
                 System.out.println("NOME: "+nome);
-                System.out.println("CPF: "+cpf);
+                System.out.println("CPF: "+cpf);*/
+                
+                System.out.println(rsEndereco.getInt("id_endereco"));
             }
             st.close();
-            //DatabaseConnection.getConnection().commit();
             DatabaseConnection.getConnection().close();
         } catch (SQLException ex) {
             System.out.println("Erro!\n"+ex.getMessage());
@@ -49,4 +47,17 @@ public class Main {
         }
     }
     
+    public static void inserir(){
+        System.out.println("NOME:");
+        String nome = Input.nextLine();
+        System.out.println("CPF:");
+        String cpf = Input.nextLine();
+        System.out.println("CIDADE:");
+        String cidade = Input.nextLine();
+        System.out.println("RUA:");
+        String rua = Input.nextLine();
+        System.out.println("NUMERO:");
+        String numero = Input.nextLine();
+    }
+
 }
