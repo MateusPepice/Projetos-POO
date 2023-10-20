@@ -10,54 +10,45 @@ import modelo.Aluno;
 import util.Input;
 
 public class Main {
-    public static DatabaseConnection.getConnection();
-    Statement st = DatabaseConnection.getConnection().createStatement();
-    
+    /* o idAluno e id_endereco está como auto increment. Considerando que a atividade não exige 
+    altas complexidades de código, as funções CRUD foram feitas manualmente.
+    */
     public static void main(String[] args) {  
         List<Aluno> alunos = new ArrayList<>();
         try{
-            ResultSet rs = st.executeQuery("select ");
-            while(rsEndereco.next()){
-                /*int id_aluno = rs.getInt("id_aluno");
-                String nome = rs.getString("nome");
-                String cpf = rs.getString("cpf");
-                
-                Aluno al = new Aluno();
-                al.setId_aluno(id_aluno);
-                al.setNome(nome);
-                al.setCpf(cpf);
-
-                alunos.add(al);
-                
-                System.out.println("\nID_ALUNO: "+id_aluno);
-                System.out.println("NOME: "+nome);
-                System.out.println("CPF: "+cpf);*/
-                
-                System.out.println(rsEndereco.getInt("id_endereco"));
-            }
+            DatabaseConnection.getConnection();
+            Statement st = DatabaseConnection.getConnection().createStatement();
+            
+            // INSERINDO ENDEREÇOS
+            /*st.executeUpdate("insert into endereco (cidade, rua, numero) "
+                    + "values ('Cascavel', 'Voluntario da Patria', '1234')");
+            st.executeUpdate("insert into endereco (cidade, rua, numero) "
+                    + "values ('Curitiba', 'Sei la', '4321')");
+            st.executeUpdate("insert into endereco (cidade, rua, numero) "
+                    + "values ('Cascavel', 'Nao sei', '1122')");*/
+            
+            // INSERINDO ALUNOS
+            /*st.executeUpdate("insert into aluno (nome, cpf, fk_endereco)"
+                    + "values ('Mateus', '123456789', 1)");
+            st.executeUpdate("insert into aluno (nome, cpf, fk_endereco)"
+                    + "values ('Pepice', '987654321', 3)");
+            st.executeUpdate("insert into aluno (nome, cpf, fk_endereco)"
+                    + "values ('Mateus Pepice', '112233445', 1)");*/
+            
+            // EXCLUINDO ALUNOS QUE MORAM NO ENDEREÇO DE ID 1
+            // st.executeUpdate("delete from aluno where fk_endereco = 1");
+            
+            // ALTERANDO O NOME DA CIDADE ONDE O ID É 1
+            /*st.executeUpdate("update endereco set cidade = 'Cidade Alterada'"
+                    + "where (id_endereco = 1)");*/
+            //ResultSet rs = st.executeQuery("select * from ");
             st.close();
             DatabaseConnection.getConnection().close();
         } catch (SQLException ex) {
             System.out.println("Erro!\n"+ex.getMessage());
         }
-        
         System.out.println("\n=======================");
-        for (Aluno aluno : alunos) {
-            System.out.println(aluno);
-        }
-    }
-    
-    public static void inserir(){
-        System.out.println("NOME:");
-        String nome = Input.nextLine();
-        System.out.println("CPF:");
-        String cpf = Input.nextLine();
-        System.out.println("CIDADE:");
-        String cidade = Input.nextLine();
-        System.out.println("RUA:");
-        String rua = Input.nextLine();
-        System.out.println("NUMERO:");
-        String numero = Input.nextLine();
     }
 
+    
 }
