@@ -16,12 +16,12 @@ public class DaoPessoa extends DAO {
         ArrayList<Aluno> listaAlunos = new ArrayList<>();
         try {
             String sql = """
-                         SELECT * FROM public.aluno 
-                         left join endereco as ed on id_endereco = ed.id""";
+                         SELECT * FROM aluno 
+                         left join endereco as ed on fk_endereco = ed.id_endereco""";
             ResultSet rs = consultaSQL(sql);
             while (rs.next()) {
                 Aluno p = new Aluno();
-                p.setId(rs.getInt("id"));
+                p.setId(rs.getInt("id_aluno"));
                 p.setNome(rs.getString("nome"));
                 p.setCpf(rs.getString("cpf"));
 
@@ -42,13 +42,13 @@ public class DaoPessoa extends DAO {
     public Aluno carregarPorId(int idAluno) {
         Aluno cl = null;
         try {
-            String sql = "SELECT * FROM public.aluno \n"
-                    + "left join endereco as ed on id_endereco = ed.id"
+            String sql = "SELECT * FROM aluno \n"
+                    + "left join endereco as ed on fk_endereco = ed.id_endereco"
                     + " where aluno.id = " + idAluno;
             ResultSet rs = consultaSQL(sql);
             if (rs.next()) {
                 cl = new Aluno();
-                cl.setId(rs.getInt("id"));
+                cl.setId(rs.getInt("id_aluno"));
                 cl.setNome(rs.getString("nome"));
                 cl.setCpf(rs.getString("cpf"));
 
