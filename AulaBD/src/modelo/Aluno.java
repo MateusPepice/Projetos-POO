@@ -1,7 +1,7 @@
 package modelo;
 
 public class Aluno {
-    private Integer id_aluno;
+    private Integer id;
     private String nome;
     private String cpf;
     private Endereco endereco;
@@ -11,18 +11,18 @@ public class Aluno {
     }
 
     public Aluno(Integer id_aluno, String nome, String cpf, Endereco endereco) {
-        this.id_aluno = id_aluno;
+        this.id = id_aluno;
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
     }
     
-    public Integer getId_aluno() {
-        return id_aluno;
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_aluno(Integer id_aluno) {
-        this.id_aluno = id_aluno;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -51,7 +51,7 @@ public class Aluno {
 
     @Override
     public String toString() {
-        return "\nOBJETO "+id_aluno+"\nid_aluno: "+id_aluno+"\nnome: "+nome+"\ncpf: "+cpf;
+        return "\nOBJETO "+id+"\nid_aluno: "+id+"\nnome: "+nome+"\ncpf: "+cpf;
     }
     
     

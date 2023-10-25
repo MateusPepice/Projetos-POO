@@ -1,7 +1,7 @@
 package modelo;
 
 public class Endereco {
-    private Integer id_endereco;
+    private Integer id;
     private String cidade;
     private String rua;
     private String numero;
@@ -10,18 +10,18 @@ public class Endereco {
     }
 
     public Endereco(Integer id_endereco, String cidade, String rua, String numero) {
-        this.id_endereco = id_endereco;
+        this.id = id_endereco;
         this.cidade = cidade;
         this.rua = rua;
         this.numero = numero;
     }
 
-    public Integer getId_endereco() {
-        return id_endereco;
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_endereco(Integer id_endereco) {
-        this.id_endereco = id_endereco;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getCidade() {
