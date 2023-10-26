@@ -12,7 +12,7 @@ public class DaoEndereco extends DAO{
             ResultSet rs = consultaSQL(sql);
             while(rs.next()){
                 Endereco end = new Endereco();
-                end.setId(rs.getInt("id"));
+                end.setId(rs.getInt("id_endereco"));
                 end.setCidade(rs.getString("cidade"));
                 end.setRua(rs.getString("rua"));
                 end.setNumero(rs.getString("numero"));
@@ -28,11 +28,11 @@ public class DaoEndereco extends DAO{
     public Endereco carregarEnderecoPorId(int idEndereco){
         Endereco end = null;
         try {
-            String sql = "select * from endereco where id = "+idEndereco;
+            String sql = "select * from endereco where id_endereco = "+idEndereco;
             ResultSet rs = consultaSQL(sql);
             if(rs.next()){
                 end = new Endereco();
-                end.setId(rs.getInt("id"));
+                end.setId(rs.getInt("id_endereco"));
                 end.setCidade(rs.getString("cidade"));
                 end.setRua(rs.getString("rua"));
                 end.setNumero(rs.getString("numero"));
@@ -46,12 +46,12 @@ public class DaoEndereco extends DAO{
     public boolean salvar(Endereco end){
         try {
             String sql = """
-                         INSERT INTO public.endereco(
-                          id, cidade, rua, numero )
-                          VALUES (?, ?, ?, ?);""";
+                         INSERT INTO endereco(
+                         id_endereco, cidade, rua, numero )
+                         VALUES (?, ?, ?, ?);""";
             
             PreparedStatement ps = criarPreparedStatement(sql);
-            end.setId(gerarProximoId("endereco"));
+            end.setId(gerarProximoId("endereco", "id_endereco"));
             ps.setInt(1, end.getId());
             ps.setString(2, end.getCidade());
             ps.setString(3, end.getRua());
@@ -68,9 +68,9 @@ public class DaoEndereco extends DAO{
     public boolean atualizar(Endereco end){
         try {
             String sql = """
-                         UPDATE public.endereco
-                          SET cidade=?, rua=?, numero=?
-                          WHERE id ="""+end.getId();
+                         UPDATE endereco
+                         SET cidade=?, rua=?, numero=?
+                         WHERE id_endereco ="""+end.getId();
             
             PreparedStatement ps = criarPreparedStatement(sql);
             ps.setString(1, end.getCidade());
@@ -86,7 +86,7 @@ public class DaoEndereco extends DAO{
     }
     
     public String comandoSqlRemover(Endereco end){
-        return "DELETE FROM public.endereco WHERE id = "+end.getId();
+        return "DELETE FROM endereco WHERE id_endereco = "+end.getId();
     }
     
     public boolean remover(Endereco end){

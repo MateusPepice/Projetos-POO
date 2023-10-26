@@ -4,11 +4,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import modelo.Aluno;
 
-public class DaoPessoa extends DAO {
+public class DaoAluno extends DAO {
 
     private DaoEndereco daoEndereco;
 
-    public DaoPessoa() {
+    public DaoAluno() {
         daoEndereco = new DaoEndereco();
     }
 
@@ -67,12 +67,12 @@ public class DaoPessoa extends DAO {
 
     public boolean salvar(Aluno aluno) {
         try {
-            String sql = "INSERT INTO public.aluno(\n"
-                    + " id, nome, cpf, id_endereco)\n"
+            String sql = "INSERT INTO aluno\n"
+                    + " (id_aluno, nome, cpf, fk_endereco)\n"
                     + " VALUES (?, ?, ?, ?)";
 
             PreparedStatement ps = criarPreparedStatement(sql);
-            aluno.setId(gerarProximoId("aluno"));
+            aluno.setId(gerarProximoId("aluno", "id_aluno"));
             ps.setInt(1, aluno.getId());
             ps.setString(2, aluno.getNome());
             ps.setString(3, aluno.getCpf());
@@ -81,9 +81,9 @@ public class DaoPessoa extends DAO {
                 if (aluno.getEndereco().getId() == null || aluno.getEndereco().getId() == 0) {
                     daoEndereco.salvar(aluno.getEndereco());
                 }
-                ps.setInt(5, aluno.getEndereco().getId());
+                ps.setInt(4, aluno.getEndereco().getId());
             } else {
-                ps.setObject(5, null);
+                ps.setObject(4, null);
             }
             ps.executeUpdate();
             return true;
@@ -100,7 +100,7 @@ public class DaoPessoa extends DAO {
 
     public boolean atualizar(Aluno aluno) {
         try {
-            String sql = "UPDATE public.aluno\n"
+            String sql = "UPDATE aluno\n"
                     + "SET nome=?, cpf=?, id_endereco=? \n"
                     + " WHERE id= " + aluno.getId();
 
@@ -108,15 +108,15 @@ public class DaoPessoa extends DAO {
             ps.setString(1, aluno.getNome());
             ps.setString(2, aluno.getCpf());
             
-            if (aluno.getEndereco() != null) {
-                if (aluno.getEndereco().getId() != null) {
+            if (aluno.getEndereco() == null) {
+                if (aluno.getEndereco().getId() == null) {
                     daoEndereco.salvar(aluno.getEndereco());
                 } else {
                     daoEndereco.atualizar(aluno.getEndereco());
                 }
-                ps.setInt(4, aluno.getEndereco().getId());
+                ps.setInt(3, aluno.getEndereco().getId());
             } else {
-                ps.setObject(4, null);
+                ps.setObject(3, null);
             }
 
             ps.executeUpdate();
@@ -129,7 +129,7 @@ public class DaoPessoa extends DAO {
 
     public boolean remover(Aluno aluno) {
         try {
-            String sql = "DELETE FROM public.aluno\n"
+            String sql = "DELETE FROM aluno\n"
                     + " WHERE id =" + aluno.getId()
                     + "; " + daoEndereco.comandoSqlRemover(aluno.getEndereco());
 

@@ -18,11 +18,12 @@ public class DAO {
         return rs;
     }
     
-    protected int gerarProximoId(String tabela){
+    protected int gerarProximoId(String tabela, String coluna){
         try {
-            ResultSet rs = consultaSQL("select max(id) from "+tabela);
+            ResultSet rs = consultaSQL("select max("+coluna+") from "+tabela);
             if(rs.next()){
-                return rs.getInt(1) + 1;
+                int valor = rs.getInt(1) + 1;
+                return valor > 0 ? valor : 1;
             }
         } catch (SQLException ex) {
             System.out.println("falha ao gerar próximo ID\n"+ ex.getMessage());
