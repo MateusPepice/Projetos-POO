@@ -14,37 +14,42 @@ public class ControleAluno {
     private DaoAluno daoAluno = new DaoAluno();
     private DaoEndereco daoEndereco = new DaoEndereco();
     private DaoCurso daoCurso = new DaoCurso();
-    private Endereco end = new Endereco();
-    private Curso cur = new Curso();
     private ArrayList<Aluno> alunos = new ArrayList<>();
+    private Menu menu = new Menu();
+    private int resposta;
+    
+    public void moduloAluno(String modulo){
+        do{
+            menu.MenuModulos(modulo);
+            resposta = Input.nextInt();
+            switch(resposta){
+                case 1 -> criar();
+                case 2 -> System.out.println(pesquisar());
+                case 3 -> atualizar();
+                case 4 -> remover();
+                case 5 -> listar();
+                case 0 -> System.out.println("");
+                default -> System.out.println("OPCAO INVALIDA!"); 
+            }
+        }while(resposta !=0);
+    }
     
     public void setarDados(Aluno aluno){
-        /*System.out.println("NOME:");
+        System.out.println("NOME:");
         aluno.setNome(Input.nextLine());
         System.out.println("CPF:");
-        aluno.setCpf(Input.nextLine());*/
+        aluno.setCpf(Input.nextLine());
         
         System.out.println("ID ENDERECO:");
-        end = daoEndereco.carregarEnderecoPorId(Input.nextInt());
-        while(end == null){
-            System.out.println("POR FAVOR, INFORME UM ID VALIDO:");
-            end = daoEndereco.carregarEnderecoPorId(Input.nextInt());
-        }
-        aluno.setEndereco(end);
+        aluno.setEndereco(daoEndereco.carregarEnderecoPorId(Input.nextInt()));
         
         System.out.println("ID CURSO:");
-        cur = daoCurso.carregarCursoPorId(Input.nextInt());
-        while(cur == null){
-            System.out.println("POR FAVOR, INFORME UM ID VALIDO:");
-            cur = daoCurso.carregarCursoPorId(Input.nextInt());
-        }
-        aluno.setCurso(cur);
+        aluno.setCurso(daoCurso.carregarCursoPorId(Input.nextInt()));
     }
     
     public void criar(){
         Aluno al = new Aluno();
         setarDados(al);
-        System.out.println(al.getEndereco().getCidade());
         alunos.add(al);
         daoAluno.salvar(al);
     }
@@ -55,9 +60,11 @@ public class ControleAluno {
             System.out.println("ALUNO NÃO ENCONTRADO!");
         }
         daoAluno.remover(aluno);
+        System.out.println("ALUNO REMOVIDO!");
     }
     
     public Aluno pesquisar(){
+        alunos = daoAluno.carregarAlunos();
         System.out.println("INFORME O ID DO ALUNO:");
         Integer id_aluno = Input.nextInt();
         for (Aluno aluno : alunos) {

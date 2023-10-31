@@ -70,7 +70,7 @@ public class DaoCurso extends DAO{
             String sql = """
                          UPDATE curso
                          SET nome=?, cargaHoraria=?, qtdSemestres=?
-                         WHERE id_endereco ="""+cur.getId_curso();
+                         WHERE id_curso ="""+cur.getId_curso();
             
             PreparedStatement ps = criarPreparedStatement(sql);
             ps.setString(1, cur.getNome());

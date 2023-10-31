@@ -8,7 +8,24 @@ import util.Input;
 public class ControleCurso {
     private ArrayList<Curso> cursos = new ArrayList();
     private DaoCurso daoCurso = new DaoCurso();
+    private Menu menu = new Menu();
     
+    public void moduloCurso(String modulo){
+        int resposta;
+        do{
+            menu.MenuModulos(modulo);
+            resposta = Input.nextInt();
+            switch(resposta){
+                case 1 -> criar();
+                case 2 -> System.out.println(pesquisar());
+                case 3 -> atualizar();
+                case 4 -> remover();
+                case 5 -> listar();
+                case 0 -> System.out.println("");
+                default -> System.out.println("OPCAO INVALIDA!"); 
+            }
+        }while(resposta !=0);
+    }
     public void setarDados(Curso cur){
         System.out.println("NOME DO CURSO:");
         cur.setNome(Input.nextLine());
@@ -31,9 +48,11 @@ public class ControleCurso {
             System.out.println("CURSO NÃO ENCONTRADO!");
         }
         daoCurso.remover(curso);
+        System.out.println("CURSO REMOVIDO!");
     }
     
     public Curso pesquisar(){
+        cursos = daoCurso.carregarCursos();
         System.out.println("INFORME O ID DO CURSO:");
         Integer id_curso = Input.nextInt();
         for (Curso curso : cursos) {

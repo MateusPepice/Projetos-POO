@@ -70,7 +70,7 @@ public class DaoAluno extends DAO {
     public boolean salvar(Aluno aluno) {
         try {
             String sql = "INSERT INTO aluno\n"
-                    + " (id_aluno, nome, cpf, , fk_curso)\n"
+                    + " (id_aluno, nome, cpf, fk_endereco, fk_curso)\n"
                     + " VALUES (?, ?, ?, ?, ?)";
 
             PreparedStatement ps = criarPreparedStatement(sql);
@@ -112,7 +112,7 @@ public class DaoAluno extends DAO {
         try {
             String sql = "UPDATE aluno\n"
                     + "SET nome=?, cpf=?, fk_endereco=?, fk_curso=? \n"
-                    + " WHERE id= " + aluno.getId();
+                    + " WHERE id_aluno= " + aluno.getId();
 
             PreparedStatement ps = criarPreparedStatement(sql);
             ps.setString(1, aluno.getNome());
@@ -150,9 +150,7 @@ public class DaoAluno extends DAO {
 
     public boolean remover(Aluno aluno) {
         try {
-            String sql = "DELETE FROM aluno\n"
-                    + " WHERE id =" + aluno.getId()
-                    + "; " + daoEndereco.comandoSqlRemover(aluno.getEndereco());
+            String sql = "DELETE FROM aluno WHERE id_aluno =" + aluno.getId();
 
             executeSql(sql);
             return true;
