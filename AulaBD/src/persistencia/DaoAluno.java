@@ -7,9 +7,11 @@ import modelo.Aluno;
 public class DaoAluno extends DAO {
 
     private DaoEndereco daoEndereco;
+    private DaoCurso daoCurso;
 
     public DaoAluno() {
         daoEndereco = new DaoEndereco();
+        daoCurso = new DaoCurso();
     }
 
     public ArrayList<Aluno> carregarAlunos() {
@@ -68,8 +70,8 @@ public class DaoAluno extends DAO {
     public boolean salvar(Aluno aluno) {
         try {
             String sql = "INSERT INTO aluno\n"
-                    + " (id_aluno, nome, cpf, fk_endereco)\n"
-                    + " VALUES (?, ?, ?, ?)";
+                    + " (id_aluno, nome, cpf, , fk_curso)\n"
+                    + " VALUES (?, ?, ?, ?, ?)";
 
             PreparedStatement ps = criarPreparedStatement(sql);
             aluno.setId(gerarProximoId("aluno", "id_aluno"));
@@ -84,6 +86,14 @@ public class DaoAluno extends DAO {
                 ps.setInt(4, aluno.getEndereco().getId());
             } else {
                 ps.setObject(4, null);
+            }
+            if (aluno.getCurso()!= null) {
+                if (aluno.getCurso().getId_curso()== null || aluno.getCurso().getId_curso() == 0) {
+                    daoCurso.salvar(aluno.getCurso());
+                }
+                ps.setInt(5, aluno.getCurso().getId_curso());
+            } else {
+                ps.setObject(5, null);
             }
             ps.executeUpdate();
             return true;
@@ -101,7 +111,7 @@ public class DaoAluno extends DAO {
     public boolean atualizar(Aluno aluno) {
         try {
             String sql = "UPDATE aluno\n"
-                    + "SET nome=?, cpf=?, id_endereco=? \n"
+                    + "SET nome=?, cpf=?, fk_endereco=?, fk_curso=? \n"
                     + " WHERE id= " + aluno.getId();
 
             PreparedStatement ps = criarPreparedStatement(sql);
@@ -117,6 +127,17 @@ public class DaoAluno extends DAO {
                 ps.setInt(3, aluno.getEndereco().getId());
             } else {
                 ps.setObject(3, null);
+            }
+            
+            if (aluno.getCurso() == null) {
+                if (aluno.getCurso().getId_curso() == null) {
+                    daoCurso.salvar(aluno.getCurso());
+                } else {
+                    daoCurso.atualizar(aluno.getCurso());
+                }
+                ps.setInt(4, aluno.getEndereco().getId());
+            } else {
+                ps.setObject(4, null);
             }
 
             ps.executeUpdate();

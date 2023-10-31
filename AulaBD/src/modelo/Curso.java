@@ -47,6 +47,12 @@ public class Curso {
     public void setQtdSemestres(String qtdSemestres) {
         this.qtdSemestres = qtdSemestres;
     }
+
+    @Override
+    public String toString() {
+        return "ID: "+id_curso+" Nome: "+nome+" Carga Horaria: "+cargaHoraria
+                +" Semestres: "+qtdSemestres;
+    }
     
     
 }
