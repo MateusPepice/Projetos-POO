@@ -6,28 +6,26 @@ import modelo.Aluno;
 
 public class DaoAluno extends DAO {
 
-    private DaoEndereco daoEndereco;
-    private DaoCurso daoCurso;
+    private DaoPessoa daoPessoa;
 
     public DaoAluno() {
-        daoEndereco = new DaoEndereco();
-        daoCurso = new DaoCurso();
+        daoPessoa = new DaoPessoa();
     }
 
     public ArrayList<Aluno> carregarAlunos() {
         ArrayList<Aluno> listaAlunos = new ArrayList<>();
         try {
             String sql = """
-                         SELECT * FROM aluno 
-                         left join endereco as ed on fk_endereco = ed.id_endereco""";
+                         SELECT p.*, a.*, ed.*, c.nome as nome_curso FROM pessoa as p
+                          inner join aluno as a on a.id_pessoa = p.id_pessoa
+                          left join endereco as ed on fk_endereco = ed.id_endereco
+                          left join curso as c on c.id_curso = a.fk_curso""";
             ResultSet rs = consultaSQL(sql);
             while (rs.next()) {
                 Aluno p = new Aluno();
-                p.setId(rs.getInt("id_aluno"));
-                p.setNome(rs.getString("nome"));
-                p.setCpf(rs.getString("cpf"));
-
-                if (rs.getObject("id_endereco", Integer.class) != null) {
+                daoPessoa.lerResultSet(p, rs);
+                 // Arrumar o resultset para pegar os valores do curso e setar em aluno
+                if (rs.getObject("fk_curso", Integer.class) != null) {
                     p.getEndereco().setId(rs.getInt("id_endereco"));
                     p.getEndereco().setCidade(rs.getString("cidade"));
                     p.getEndereco().setRua(rs.getString("rua"));
