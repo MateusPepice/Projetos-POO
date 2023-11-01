@@ -76,6 +76,7 @@ public class ControleCurso {
         cursos = daoCurso.carregarCursos();
         for (Curso curso : cursos) {
             System.out.println(curso);
+            System.out.println("ALUNOS MATRICULADOS: "+daoCurso.alunosCurso(curso.getId_curso())+"\n");
         }
     }
 }

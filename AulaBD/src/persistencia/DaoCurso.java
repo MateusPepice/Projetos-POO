@@ -5,6 +5,20 @@ import java.util.ArrayList;
 import modelo.Curso;
 
 public class DaoCurso extends DAO{
+    
+    public int alunosCurso(Integer fk_curso){
+        try{
+            String sql = "select count(id_aluno) as quantidade from aluno inner join curso on curso.id_curso = aluno.fk_curso where id_curso = "+fk_curso;
+            ResultSet rs = consultaSQL(sql);
+            rs.next();
+            int resultado = rs.getInt("quantidade");
+            return resultado;
+        }catch(SQLException ex) {
+            System.out.println("Falha ao carregar cursos!\n"+ ex.getMessage());
+        }
+        return 0;
+    }
+    
     public ArrayList<Curso> carregarCursos(){
         ArrayList<Curso> cursos = new ArrayList<>();
         try {
@@ -98,4 +112,6 @@ public class DaoCurso extends DAO{
             return false;
         }
     }
+    
+    
 }

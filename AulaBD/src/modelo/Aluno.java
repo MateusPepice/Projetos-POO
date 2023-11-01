@@ -1,6 +1,6 @@
 package modelo;
 
-public class Aluno {
+public class Aluno implements Comparable<Aluno>{
     private Integer id;
     private String nome;
     private String cpf;
@@ -66,6 +66,11 @@ public class Aluno {
                 +endereco.toString()
                 +"\n----------------CURSO---------------------\n"
                 +curso.toString()+"\n\n";
+    }
+
+    @Override
+    public int compareTo(Aluno a) {
+        return this.nome.compareToIgnoreCase(a.getNome());
     }
     
     

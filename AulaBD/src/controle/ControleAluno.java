@@ -1,9 +1,8 @@
 package controle;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import modelo.Aluno;
-import modelo.Curso;
-import modelo.Endereco;
 import persistencia.DaoAluno;
 import persistencia.DaoCurso;
 import persistencia.DaoEndereco;
@@ -86,8 +85,23 @@ public class ControleAluno {
     
     public void listar(){
         alunos = daoAluno.carregarAlunos();
-        for (Aluno aluno : alunos) {
-            System.out.println(aluno);
+        
+        System.out.println("1 - ORDEM CRESCENTE");
+        System.out.println("2 - ORDEM DECRESCENTE");
+        int resposta = Input.nextInt();
+        
+        if(resposta == 1){
+            Collections.sort(alunos);
+            for (Aluno aluno : alunos) {
+                System.out.println(aluno);
+            }
+        }else{
+            Collections.sort(alunos);
+            Collections.reverse(alunos);
+            for (Aluno aluno : alunos) {
+                System.out.println(aluno);
+            }
         }
+        
     }
 }

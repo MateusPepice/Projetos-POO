@@ -4,6 +4,7 @@ import controle.ControleAluno;
 import controle.ControleCurso;
 import controle.ControleEndereco;
 import controle.Menu;
+import persistencia.DaoCurso;
 import util.Input;
 
 public class Main {
@@ -12,6 +13,7 @@ public class Main {
     private static ControleAluno cadAluno = new ControleAluno();
     private static ControleCurso cadCurso = new ControleCurso();
     private static ControleEndereco cadEndereco = new ControleEndereco();
+    private static DaoCurso daoCurso = new DaoCurso();
     
     public static void main(String[] args) {
         int resposta;
