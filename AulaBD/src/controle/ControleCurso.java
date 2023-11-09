@@ -2,12 +2,15 @@ package controle;
 
 import java.util.ArrayList;
 import modelo.Curso;
+import modelo.Disciplina;
 import persistencia.DaoCurso;
+import persistencia.DaoDisciplina;
 import util.Input;
 
 public class ControleCurso {
     private ArrayList<Curso> cursos = new ArrayList();
     private DaoCurso daoCurso = new DaoCurso();
+    private DaoDisciplina daoDisciplina = new DaoDisciplina();
     private Menu menu = new Menu();
     
     public void moduloCurso(String modulo){
@@ -75,8 +78,22 @@ public class ControleCurso {
     public void listar(){
         cursos = daoCurso.carregarCursos();
         for (Curso curso : cursos) {
+            System.out.println("\n=====CURSO "+curso.getNome()+"=====");
             System.out.println(curso);
-            System.out.println("ALUNOS MATRICULADOS: "+daoCurso.alunosCurso(curso.getId_curso())+"\n");
+            System.out.println("ALUNOS MATRICULADOS: "+daoCurso.alunosCurso(curso.getId_curso()));
+            System.out.println("=====DISCIPLINAS=====");
+            listarDisciplinas(curso.getId_curso());
+        }
+    }
+    
+    public void listarDisciplinas(Integer id_curso){
+        ArrayList<String> nomeDisciplinas = daoDisciplina.disciplinasCurso(id_curso);
+        if(nomeDisciplinas == null || nomeDisciplinas.isEmpty()){
+            System.out.println("SEM DISCIPLINAS VINCULADAS.");
+            return;
+        }
+        for (String nomes : nomeDisciplinas) {
+            System.out.println(nomes);
         }
     }
 }

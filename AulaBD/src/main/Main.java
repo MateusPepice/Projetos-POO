@@ -2,9 +2,9 @@ package main;
 
 import controle.ControleAluno;
 import controle.ControleCurso;
+import controle.ControleDisciplina;
 import controle.ControleEndereco;
 import controle.Menu;
-import persistencia.DaoCurso;
 import util.Input;
 
 public class Main {
@@ -13,7 +13,7 @@ public class Main {
     private static ControleAluno cadAluno = new ControleAluno();
     private static ControleCurso cadCurso = new ControleCurso();
     private static ControleEndereco cadEndereco = new ControleEndereco();
-    private static DaoCurso daoCurso = new DaoCurso();
+    private static ControleDisciplina cadDisciplina = new ControleDisciplina();
     
     public static void main(String[] args) {
         int resposta;
@@ -24,6 +24,7 @@ public class Main {
                 case 1 -> cadAluno.moduloAluno("ALUNO");
                 case 2 -> cadEndereco.moduloEndereco("ENDERECO");
                 case 3 -> cadCurso.moduloCurso("CURSO");
+                case 4 -> cadDisciplina.moduloDisciplina("DISCIPLINA");
                 case 0 -> System.out.println("SAINDO DO SISTEMA...");
                 default -> System.out.println("OPCAO INVALIDA!");
             }

@@ -8,7 +8,9 @@ public class DaoCurso extends DAO{
     
     public int alunosCurso(Integer fk_curso){
         try{
-            String sql = "select count(id_aluno) as quantidade from aluno inner join curso on curso.id_curso = aluno.fk_curso where id_curso = "+fk_curso;
+            String sql = "select count(id_aluno) as quantidade from aluno "
+                    + "inner join curso on curso.id_curso = aluno.fk_curso "
+                    + "where fk_curso = "+fk_curso;
             ResultSet rs = consultaSQL(sql);
             rs.next();
             int resultado = rs.getInt("quantidade");

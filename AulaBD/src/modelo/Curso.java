@@ -1,19 +1,24 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class Curso {
     private Integer id_curso;
     private String nome;
     private String cargaHoraria;
     private String qtdSemestres;
+    private ArrayList<Disciplina> disciplinas;
 
     public Curso() {
+        this.disciplinas = new ArrayList();
     }
 
-    public Curso(Integer id_curso, String nome, String cargaHoraria, String qtdSemestres) {
+    public Curso(Integer id_curso, String nome, String cargaHoraria, String qtdSemestres, ArrayList disciplina) {
         this.id_curso = id_curso;
         this.nome = nome;
         this.cargaHoraria = cargaHoraria;
         this.qtdSemestres = qtdSemestres;
+        this.disciplinas = disciplina;
     }
 
     public Integer getId_curso() {
@@ -48,6 +53,20 @@ public class Curso {
         this.qtdSemestres = qtdSemestres;
     }
 
+    public void iteradorDisciplinas(){
+        for (Disciplina disciplina : disciplinas) {
+            System.out.println(disciplina);
+        }
+    }
+    
+    public ArrayList<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(ArrayList<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+    
     @Override
     public String toString() {
         return "ID: "+id_curso+" Nome: "+nome+" Carga Horaria: "+cargaHoraria

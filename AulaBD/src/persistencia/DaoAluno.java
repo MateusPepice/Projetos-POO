@@ -7,6 +7,8 @@ import modelo.Aluno;
 public class DaoAluno extends DAO {
 
     private DaoPessoa daoPessoa;
+    private DaoEndereco daoEndereco;
+    private DaoCurso daoCurso;
 
     public DaoAluno() {
         daoPessoa = new DaoPessoa();

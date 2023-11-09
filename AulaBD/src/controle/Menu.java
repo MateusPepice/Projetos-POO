@@ -9,6 +9,7 @@ public class Menu {
         System.out.println("1 - MODULO ALUNO");
         System.out.println("2 - MODULO ENDEREÇO");
         System.out.println("3 - MODULO CURSO");
+        System.out.println("4 - MODULO DISCIPLINA");
         System.out.println("0 - SAIR");
     }
     

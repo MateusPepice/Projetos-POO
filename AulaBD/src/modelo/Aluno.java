@@ -24,7 +24,9 @@ public class Aluno extends Pessoa{
     public String toString() {
         return super.toString()+
                 "\n----------------CURSO---------------------\n"
-                +curso.toString()+"\n\n";
+                +curso.toString()+"\n\n"+
+                "\n----------------DISCIPLINAS---------------------\n"
+                +curso.getDisciplinas();
     }
 
 }
