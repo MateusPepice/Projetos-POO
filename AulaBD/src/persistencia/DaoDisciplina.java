@@ -98,7 +98,7 @@ public class DaoDisciplina extends DAO{
         try {
             String sql = """
                          UPDATE disciplina
-                         SET nome=?, cargaHoraria=?, semestres=?, fk_curso=? 
+                         SET nome=?, cargaHoraria=?, semestre=?, fk_curso=? 
                          WHERE id_disciplina ="""+dis.getId_disciplina();
             
             PreparedStatement ps = criarPreparedStatement(sql);

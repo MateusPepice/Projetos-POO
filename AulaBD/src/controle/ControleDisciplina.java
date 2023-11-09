@@ -50,7 +50,8 @@ public class ControleDisciplina {
     public void remover(){
         Disciplina disciplina = pesquisar();
         if(disciplina == null){
-            System.out.println("DISCIPLINA NÃO ENCONTRADO!");
+            System.out.println("DISCIPLINA NÃO ENCONTRADO!\n");
+            return;
         }
         daoDisciplina.remover(disciplina);
         System.out.println("DISCIPLINA REMOVIDO!");
@@ -71,7 +72,8 @@ public class ControleDisciplina {
     public void atualizar(){
         Disciplina disciplina = pesquisar();
         if(disciplina == null){
-            System.out.println("DISCIPLINA NÃO ENCONTRADO!");
+            System.out.println("DISCIPLINA NÃO ENCONTRADO!\n");
+            return;
         }
         setarDados(disciplina);
         daoDisciplina.atualizar(disciplina);
@@ -79,6 +81,10 @@ public class ControleDisciplina {
     
     public void listar(){
         disciplinas = daoDisciplina.carregarDisciplinas();
+        if (disciplinas.isEmpty() || disciplinas == null){
+            System.out.println("SEM REGISTROS!\n");
+            return;
+        }
         for (Disciplina disciplina : disciplinas) {
             System.out.println(disciplina);
         }
